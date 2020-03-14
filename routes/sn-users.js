@@ -1,18 +1,17 @@
 const express = require("express");
-const crypto = require('crypto')
-const jwt = require('jsonwebtoken')
+const uniqueValidator = require('mongoose-unique-validator');
+const bcrypt = require('bcrypt-nodejs')
 const router = express.Router();
 const User = require("../models/user");
 
 //Create new User
 router.post('/', async (req, res) => {
-const {  username, email,  token, image } = req.body;
+const {  name, email, password } = req.body;
 
     const user = new User ({
-        username,
+        name,
         email,
-        token,
-        image
+      password
     });
     try {
         const newUser = await user.save();
@@ -33,26 +32,22 @@ router.get("/", async (req, res) => {
 });
 
 //Get One User
-//Read User By Username
-router.get("/:username", getUserByUsername, (req, res) => {
+//Read User By Name
+router.get("/:name", getUserByName, (req, res) => {
     res.json(res.user);
   });
 
-  //Update Username
-  router.patch("/:username", getUserByUsername, async (req, res) => {
-    if (req.body.username != null) {
-      res.user.username = req.body.username;
+  //Update Name
+  router.patch("/:name", getUserByName, async (req, res) => {
+    if (req.body.name != null) {
+      res.user.name = req.body.name;
     }
     if (req.body.email != null) {
-      res.graduate.email = req.body.email;
+      res.user.email = req.body.email;
     }
-    if (req.body.token != null) {
-        res.graduate.token = req.body.token;
+    if (req.body.password != null) {
+        res.user.token = req.body.password;
       }
-
-    if (req.body.image != null) {
-      res.graduate.image = req.body.image;
-    }
     try {
       const updatedUser = await res.user.save();
       res.json(updatedUser);
@@ -62,7 +57,7 @@ router.get("/:username", getUserByUsername, (req, res) => {
   });
   
   //Delete
-  router.delete("/:username", getUserByUsername, async (req, res) => {
+  router.delete("/:name", getUserByName, async (req, res) => {
     try {
       await res.user.remove();
       res.json({ message: "Deleted User Profile" });
@@ -71,14 +66,14 @@ router.get("/:username", getUserByUsername, (req, res) => {
     }
   });
   
-  //get one by username function
-  async function getUserByUsername(req, res, next) {
+  //get one by Name function
+  async function getUserByName(req, res, next) {
     const user;
-    const username = req.params.username;
+    const name = req.params.name;
     try {
-      user = await User.findOne({ username });
-      if (graduate == null) {
-        return res.status(404).json({ message: "Cannot Find User" });
+      user = await User.findOne({ name });
+      if (user == null) {
+        return res.status(404).json({ message: "Cannot Find User's Name" });
       }
     } catch (err) {
       return res.status(500).json({ message: err.message });
