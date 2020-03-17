@@ -17,14 +17,16 @@ const app = express();
 // require('./config/passport.js')
 // const indexRouter = require('./routes/index')
  const userRouter = require('./routes/sn-users')
- app.use("/sn-users", userRouter)
+ const newsSearchRouter = require('./routes/dj_news');
+ app.use("/sn-users", userRouter);
+ app.use("/dj_news", newsSearchRouter);
 
 //Connect to Database
-const mongoose = require('mongoose')
-mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true  })
-const db = mongoose.connection
-db.on('error', error => console.log(error))
-db.on('open', () => console.log('Connected to the database'))
+const mongoose = require('mongoose');
+mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true  });
+const db = mongoose.connection;
+db.on('error', error => console.log(error));
+db.on('open', () => console.log('Connected to the database'));
 
 //Listening to Server
-app.listen(3000, console.log('Listening to Server'))
+app.listen(3000, console.log('Listening to Server'));
