@@ -13,7 +13,7 @@
         <div class="profile-header">
             <div class="profile-img">
                 <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png">
-            
+
             </div>
             <div class="profile-nav-info">
                 <h3 class="username">
@@ -21,12 +21,12 @@
                 </h3>
             </div>
         </div>
-                <div class="main-bd">
-                    <div class="left-side">
-                    <div class="profile-side">
-                        
+        <div class="main-bd">
+            <div class="left-side">
+                <div class="profile-side">
+
                     <div class="profile-btn">
-                        
+
                         <button class="message-btn"> Message
                         </button>
                         <button class="follow-btn"> Follow
@@ -34,7 +34,7 @@
                     </div>
                 </div>
             </div>
-                <div class="right-side">
+            <div class="right-side">
                 <div class="nav">
                     <ul>
                         <li class="tablinks" onclick="tabs(event, 'news-article')">News Article</li>
@@ -42,39 +42,29 @@
                         <li class="tablinks" onclick="tabs(event, 'settings')">Settings</li>
 
                     </ul>
-                </div> 
+                </div>
                 <div class="profile-body">
                     <div id="news-article" class="profiletab">
                         <h1> Your News</h1>
+                        <button id="button">Click For List Of News</button>
+
+                        <div id="text"></div>
                         <br>
-                        <button id="button">Clicketh Here For Thine</button>
-    
-    <div id="sourcename"></div>
-    <br>
-    <div id="author"></div>
-    <br>
-    <div id="title"></div>
-    <br>
-    <div id="description"></div>
-    <br>
-    <div id="url"></div>
-    <br>
-    <div id="urlToImage"></div>
-    <br>
-    <div id="publishedAt"></div>
-    <br>
-    <div id="content"></div>
-                        
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore magni et corrupti sequi non
+                            cumque labore doloribus. Explicabo sapiente vitae quo, tempore dolores velit cupiditate
+                            itaque, voluptatem dignissimos, magni voluptates?</p>
+
                     </div>
                     <div id="search-articles" class="profiletab">
                         <h1> Search News</h1>
                         <p></p>
                         <br>
-                        <form id="searchbox">
-                            <input type="text" placeholder="Search">
-                            <button class="searchBtn">enter</button>
-                        </form>
+                        <label>
+                            <input type="text" id='searchWrd'>
+                        </label>
+                        <button id="searchBtn" >enter</button>
                         <br>
+                        <div id='searchedResults'></div>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore magni et corrupti sequi non
                             cumque labore doloribus. Explicabo sapiente vitae quo, tempore dolores velit cupiditate
                             itaque, voluptatem dignissimos, magni voluptates?</p>
@@ -87,11 +77,11 @@
                     </div>
                 </div>
             </div>
+        </div>
     </div>
-</div>
 
-<script src="profile.js"></script>
-<script src="../xhr.js"></script>
+    <script src="profile.js"></script>
+    <script src="search.js"></script>
 </body>
 
 </html>
