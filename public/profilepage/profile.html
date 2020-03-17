@@ -37,26 +37,49 @@
                 <div class="right-side">
                 <div class="nav">
                     <ul>
-                        <li onclick="tabs(0)" class="liked-newsArticle">News Article</li>
-                        <li onclick="tabs(1)" class="search-articles">Search</li>
-                        <li onclick="tabs(2)" class="user-settings">Settings</li>
+                        <li class="tablinks" onclick="tabs(event, 'news-article')">News Article</li>
+                        <li class="tablinks" onclick="tabs(event, 'search-articles')">Search</li>
+                        <li class="tablinks" onclick="tabs(event, 'settings')">Settings</li>
 
                     </ul>
                 </div> 
                 <div class="profile-body">
-                    <div class="profile-newsArticle tab">
+                    <div id="news-article" class="profiletab">
                         <h1> Your News</h1>
+                        <br>
+                        <button id="button">Clicketh Here For Thine</button>
+    
+    <div id="sourcename"></div>
+    <br>
+    <div id="author"></div>
+    <br>
+    <div id="title"></div>
+    <br>
+    <div id="description"></div>
+    <br>
+    <div id="url"></div>
+    <br>
+    <div id="urlToImage"></div>
+    <br>
+    <div id="publishedAt"></div>
+    <br>
+    <div id="content"></div>
+                        
+                    </div>
+                    <div id="search-articles" class="profiletab">
+                        <h1> Search News</h1>
+                        <p></p>
+                        <br>
+                        <form id="searchbox">
+                            <input type="text" placeholder="Search">
+                            <button class="searchBtn">enter</button>
+                        </form>
+                        <br>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore magni et corrupti sequi non
                             cumque labore doloribus. Explicabo sapiente vitae quo, tempore dolores velit cupiditate
                             itaque, voluptatem dignissimos, magni voluptates?</p>
                     </div>
-                    <div class="profile-search tab">
-                        <h1> Search News <Article></Article></h1>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore magni et corrupti sequi non
-                            cumque labore doloribus. Explicabo sapiente vitae quo, tempore dolores velit cupiditate
-                            itaque, voluptatem dignissimos, magni voluptates?</p>
-                    </div>
-                    <div class="profile-settings tab">
+                    <div id="settings" class="profiletab">
                         <h1>Settings</h1>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore magni et corrupti sequi non
                             cumque labore doloribus. Explicabo sapiente vitae quo, tempore dolores velit cupiditate
@@ -67,6 +90,8 @@
     </div>
 </div>
 
+<script src="profile.js"></script>
+<script src="../xhr.js"></script>
 </body>
 
 </html>
