@@ -1,20 +1,20 @@
 require('dotenv').config();
 const express = require('express')
-const passport = require('passport')
+// const passport = require('passport')
 const app = express();
 
 //MiddleWare
 
-app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.urlencoded({ extended: false }));
 //set key for encrypting cookies, and avoid saving unmodified content
-app.use(session({secret: 'secretKey', saveUninitialized: false}))
+// app.use(session({secret: 'secretKey', saveUninitialized: false}))
 
 //Middleware to change user value in request to deserialized user
-app.use(passport.session())
+// app.use(passport.session())
 
 //middleware to initialize passport for authentication
-app.use(passport.initialize())
-require('./config/passport.js')
+// app.use(passport.initialize())
+// require('./config/passport.js')
 // const indexRouter = require('./routes/index')
 // const userRouter = require('./routes/users')
 

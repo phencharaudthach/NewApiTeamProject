@@ -1,6 +1,6 @@
 const express = require("express");
-const uniqueValidator = require('mongoose-unique-validator');
-const bcrypt = require('bcrypt-nodejs')
+// const uniqueValidator = require('mongoose-unique-validator');
+// const bcrypt = require('bcrypt-nodejs')
 const router = express.Router();
 const User = require("../models/user");
 
