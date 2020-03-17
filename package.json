@@ -20,8 +20,15 @@
   "dependencies": {
     "crypto": "^1.0.1",
     "express": "^4.17.1",
+<<<<<<< HEAD
     "mongoose": "^5.9.4",
     "mongoose-unique-validator": "^2.0.3",
+=======
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.4",
+    "mongoose-unique-validator": "^2.0.3",
+    "nodemon": "^2.0.2",
+>>>>>>> c65ba43654fb0a540f29dce3551bf850819b2162
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "user": "0.0.0"
