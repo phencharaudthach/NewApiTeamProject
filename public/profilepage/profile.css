@@ -113,8 +113,10 @@ button.message-btn, button.follow-btn {
 }
 
 .profile-body {
-    width: 600px;
+    width: 100%;
     z-index: -1;
+    padding: 20px;
+    word-break: break-all;
 }
 
 .profiletab {
