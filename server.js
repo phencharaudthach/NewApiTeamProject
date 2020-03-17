@@ -18,15 +18,17 @@ const app = express();
 // const indexRouter = require('./routes/index')
  const userRouter = require('./routes/sn-users')
  const newsSearchRouter = require('./routes/dj_news');
+
+ app.use(express.json());
  app.use("/sn-users", userRouter);
  app.use("/dj_news", newsSearchRouter);
 
 //Connect to Database
 const mongoose = require('mongoose');
-mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true  });
+mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
 const db = mongoose.connection;
 db.on('error', error => console.log(error));
-db.on('open', () => console.log('Connected to the database'));
+db.once('open', () => console.log('Connected to the database'));
 
 //Listening to Server
 app.listen(3000, console.log('Listening to Server'));
