@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
-const uniqueValidator = require('mongoose-unique-validator')
-const bcrypt = require('bcrypt-nodejs')
+// const uniqueValidator = require('mongoose-unique-validator')
+// const bcrypt = require('bcrypt-nodejs')
 
 //User schema
 const userSchema = new mongoose.Schema ({
@@ -21,15 +21,15 @@ const userSchema = new mongoose.Schema ({
     password: String,
 });
 
-//Get password and hash it
-userSchema.methods.encryptPassword = (password) => {
-    return bcrypt.hashSync(password, bcrypt.genSaltSync(5), null)
-};
+// //Get password and hash it
+// userSchema.methods.encryptPassword = (password) => {
+//     return bcrypt.hashSync(password, bcrypt.genSaltSync(5), null)
+// };
 
-//Check if password matches hashed password
-userSchema.methods.validPassword = (password) => {
-    return bcrypt.compareSync(password, this.password)
-};
+// //Check if password matches hashed password
+// userSchema.methods.validPassword = (password) => {
+//     return bcrypt.compareSync(password, this.password)
+// };
 
 
 module.exports = mongoose.model('User', userSchema);
