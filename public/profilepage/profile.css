@@ -9,7 +9,7 @@
 }
 body {
     background: #ddd8d8;
-    overflow: hidden;
+    overflow: scroll;
     padding-top: 90px;
     font-family: sans-serif;
     margin: 0 100px;
@@ -71,7 +71,7 @@ body {
 button.message-btn, button.follow-btn {
     border: 0;
     padding: 10px;
-    width: 100px;
+    width: 100%;
     border-radius: 3px;
     background: var(--color);
     font-family: sans-serif;
@@ -113,13 +113,17 @@ button.message-btn, button.follow-btn {
 }
 
 .profile-body {
-    width: 100%;
+    width: 600px;
     z-index: -1;
 }
 
 .profiletab {
-    padding: 30px;
+   display: none;
+}
+
+.tab {
+    padding: 20px;
     width: 100%;
     text-align: center;
-    display: none;
+    
 }
