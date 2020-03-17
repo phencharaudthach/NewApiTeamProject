@@ -1,6 +1,6 @@
 const express = require("express");
-const uniqueValidator = require('mongoose-unique-validator');
-const bcrypt = require('bcrypt-nodejs')
+// const uniqueValidator = require('mongoose-unique-validator');
+// const bcrypt = require('bcrypt-nodejs')
 const router = express.Router();
 const User = require("../models/user");
 
@@ -23,6 +23,7 @@ const {  name, email, password } = req.body;
 
 //Get All Users
 router.get("/", async (req, res) => {
+  console.log("Hello World")
   try {
     const users = await User.find();
     res.json(users);
@@ -74,7 +75,7 @@ router.get("/:name", getUserByName, (req, res) => {
 =======
   //get one by Name function
   async function getUserByName(req, res, next) {
-    const user;
+    let user;
     const name = req.params.name;
 >>>>>>> c65ba43654fb0a540f29dce3551bf850819b2162
     try {
