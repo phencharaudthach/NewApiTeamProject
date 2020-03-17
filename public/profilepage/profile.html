@@ -37,26 +37,26 @@
                 <div class="right-side">
                 <div class="nav">
                     <ul>
-                        <li onclick="tabs(0)" class="liked-newsArticle">News Article</li>
-                        <li onclick="tabs(1)" class="search-articles">Search</li>
-                        <li onclick="tabs(2)" class="user-settings">Settings</li>
+                        <li class="tablinks" onclick="tabs(event, 'news-article')">News Article</li>
+                        <li class="tablinks" onclick="tabs(event, 'search-articles')">Search</li>
+                        <li class="tablinks" onclick="tabs(event, 'settings')">Settings</li>
 
                     </ul>
                 </div> 
                 <div class="profile-body">
-                    <div class="profile-newsArticle tab">
+                    <div id="news-article" class="profiletab">
                         <h1> Your News</h1>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore magni et corrupti sequi non
                             cumque labore doloribus. Explicabo sapiente vitae quo, tempore dolores velit cupiditate
                             itaque, voluptatem dignissimos, magni voluptates?</p>
                     </div>
-                    <div class="profile-search tab">
-                        <h1> Search News <Article></Article></h1>
+                    <div id="search-articles" class="profiletab">
+                        <h1> Search News</h1>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore magni et corrupti sequi non
                             cumque labore doloribus. Explicabo sapiente vitae quo, tempore dolores velit cupiditate
                             itaque, voluptatem dignissimos, magni voluptates?</p>
                     </div>
-                    <div class="profile-settings tab">
+                    <div id="settings" class="profiletab">
                         <h1>Settings</h1>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore magni et corrupti sequi non
                             cumque labore doloribus. Explicabo sapiente vitae quo, tempore dolores velit cupiditate
@@ -67,6 +67,7 @@
     </div>
 </div>
 
+<script src="profile.js"></script>
 </body>
 
 </html>
