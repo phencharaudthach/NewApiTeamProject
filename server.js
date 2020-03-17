@@ -16,7 +16,8 @@ const app = express();
 // app.use(passport.initialize())
 // require('./config/passport.js')
 // const indexRouter = require('./routes/index')
-// const userRouter = require('./routes/users')
+ const userRouter = require('./routes/sn-users')
+ app.use("/sn-users", userRouter)
 
 //Connect to Database
 const mongoose = require('mongoose')

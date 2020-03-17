@@ -23,6 +23,7 @@ const {  name, email, password } = req.body;
 
 //Get All Users
 router.get("/", async (req, res) => {
+  console.log("Hello World")
   try {
     const users = await User.find();
     res.json(users);
@@ -68,7 +69,7 @@ router.get("/:name", getUserByName, (req, res) => {
   
   //get one by Name function
   async function getUserByName(req, res, next) {
-    const user;
+    let user;
     const name = req.params.name;
     try {
       user = await User.findOne({ name });
