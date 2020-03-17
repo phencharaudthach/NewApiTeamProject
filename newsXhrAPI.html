@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="button">Clicketh Here For Thine</button>
+    
+    <div id="sourcename"></div>
+    <div id="author"></div>
+    <div id="title"></div>
+    <div id="description"></div>
+    <div id="url"></div>
+    <div id="urlToImage"></div>
+    <div id="publishedAt"></div>
+    <div id="content"></div>
+    
+
+    <script>
+        document.getElementById("button").addEventListener("click", getData);
+
+        function getData() {
+            //Step 1: initialize a New XHR object
+            var xhrObj = new XMLHttpRequest();
+           // console.log(xhrObj);
+
+            //Step 2: xhr.open(requestType, URL, asyncBool)
+            xhrObj.open('GET', 'http://newsapi.org/v2/top-headlines?' +
+          'country=us&' +
+          'apiKey=0347c2b176094a9d97c532469f456baa', true);
+
+            // Step 3: Wait for transfer to load. 
+            xhrObj.onload = function () {
+
+                if (xhrObj.status == 200) {
+                    // console.log(xhrObj.responseText);
+
+                    // step 5: convert text data to JSON
+                    var parsedData = JSON.parse(xhrObj.responseText); 
+                    console.log(parsedData);
+
+                    for (var i=0;i < parsedData.length; i++){
+
+                    }
+                    document.getElementById("sourcename").innerText = "Source Name "+ parsedData.articles[0].source.name;
+                    document.getElementById("author").innerText = "Author " + parsedData.articles[0].author;
+                    document.getElementById("title").innerText = "title " + parsedData.articles[0].title;
+                    document.getElementById("description").innerText = "description " + parsedData.articles[0].description;
+                    document.getElementById("url").innerText = "url " + parsedData.articles[0].url;
+                    document.getElementById("urlToImage").innerText = "urlToImage " + parsedData.articles[0].urlToImage;
+                    document.getElementById("publishedAt").innerText = "publishedAt " + parsedData.articles[0].publishedAt;
+                    document.getElementById("content").innerText = "content " + parsedData.articles[0].content;
+
+            }
+
+            }
+            // Step: 4
+            xhrObj.send();
+        }
+    </script>
+</body>
+
+</html>
