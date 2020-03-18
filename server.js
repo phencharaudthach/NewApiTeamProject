@@ -17,11 +17,12 @@ const app = express();
 // require('./config/passport.js')
 // const indexRouter = require('./routes/index')
  const userRouter = require('./routes/sn-users')
- const newsSearchRouter = require('./routes/dj_news');
+//  const newsSearchRouter = require('./routes/dj_news');
 
  app.use(express.json());
- app.use("/sn-users", userRouter);
- app.use("/dj_news", newsSearchRouter);
+//  app.use("/sn-users", userRouter);
+//  app.use("/dj_news", newsSearchRouter);
+app.use(express.static('./public'))
 
 //Connect to Database
 const mongoose = require('mongoose');
