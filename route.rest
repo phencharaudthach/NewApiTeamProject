@@ -8,9 +8,9 @@ POST http://localhost:3000/sn-users/
 Content-Type: application/json
 
 {
-    "name": "David",
-    "email": "sBrown@gmail.com",
-    "password": "SBrown$@@20"
+    "username": "Nick1",
+    "email": "Nick2@gmail.com",
+    "password": "passwordtest",
 }
 
 
