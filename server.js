@@ -26,7 +26,7 @@ passport.use(new LocalStrategy(User.authenticate()));
 //  const newsSearchRouter = require('./routes/dj_news');
 
  app.use(express.json());
-//  app.use("/sn-users", userRouter);
+ app.use("/sn-users", userRouter);
 //  app.use("/dj_news", newsSearchRouter);
 app.use(express.static('./public'))
 
