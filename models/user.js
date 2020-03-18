@@ -17,7 +17,9 @@ const userSchema = new mongoose.Schema ({
         // unique: true
         // required: [true, "can't be blank"] 
         // match: [/\S+@\S+\.\S+/, 'is invalid']
-    }
+    },
+    image: String,
+    country: String
 });
 
 
