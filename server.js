@@ -1,20 +1,26 @@
-require('dotenv').config();
 const express = require('express')
-// const passport = require('passport')
+const passport = require('passport')
 const app = express();
+const session = require('express-session');
+const User = require('./models/user'); 
+require('dotenv/config');
+require('./config/passport.js')
 
 //MiddleWare
 
 // app.use(bodyParser.urlencoded({ extended: false }));
-//set key for encrypting cookies, and avoid saving unmodified content
-// app.use(session({secret: 'secretKey', saveUninitialized: false}))
-
-//Middleware to change user value in request to deserialized user
-// app.use(passport.session())
 
 //middleware to initialize passport for authentication
-// app.use(passport.initialize())
-// require('./config/passport.js')
+app.use(passport.initialize());
+//Middleware to keep track of users session
+app.use(passport.session());
+passport.serializeUser(User.serializeUser()); 
+passport.deserializeUser(User.deserializeUser()); 
+
+const LocalStrategy = require('passport-local').Strategy; 
+passport.use(new LocalStrategy(User.authenticate())); 
+
+
 // const indexRouter = require('./routes/index')
  const userRouter = require('./routes/sn-users')
  const newsSearchRouter = require('./routes/dj_news');
