@@ -43,7 +43,7 @@ function getData() {
 
             let list = '';
             for (var i=0;i < parsedData.articles.length; i++){
-                list += "<ul>" +"<h4>"+i+"</h4>" + 
+                list += "<ul>" +"<h4>"+[i+1]+"</h4>" + 
                 '<p> Article Name: ' +parsedData.articles[i].source.name+ '</p>'+
                 '<p> Author: '+parsedData.articles[i].author+'</p>'+
                 '<p>Title: ' +parsedData.articles[i].title+'</p>'+
