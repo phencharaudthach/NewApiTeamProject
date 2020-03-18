@@ -17,29 +17,33 @@ const app = express();
 // require('./config/passport.js')
 // const indexRouter = require('./routes/index')
  const userRouter = require('./routes/sn-users')
- app.use("/sn-users", userRouter)
+ const newsSearchRouter = require('./routes/dj_news');
+
+ app.use(express.json());
+ app.use("/sn-users", userRouter);
+ app.use("/dj_news", newsSearchRouter);
 
 //Connect to Database
-const mongoose = require('mongoose')
-<<<<<<< HEAD
-
-
-mongoose.connect('mongodb+srv://jaliyah:jaliyah123@cluster0-7lgiw.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true })
-=======
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true  })
->>>>>>> 30a4b91b7366219ec3a6a3e79b36ceb3b79ddc8a
 const db = mongoose.connection
 db.on('error', error => console.log(error))
 db.on('open', () => console.log('Connected to the database'))
 
-<<<<<<< HEAD
+const mongoose = require('mongoose');
+mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
+const db = mongoose.connection;
+db.on('error', error => console.log(error));
+db.once('open', () => console.log('Connected to the database'));
+
+
+
 app.use(express.json())
 
 const userRouter = require('./routes/sn-users')
 app.use('user',userRouter)
 
-app.listen(3005)
-=======
+
+
 //Listening to Server
-app.listen(3000, console.log('Listening to Server'))
->>>>>>> 30a4b91b7366219ec3a6a3e79b36ceb3b79ddc8a
+app.listen(3000, console.log('Listening to Server'));
+

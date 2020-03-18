@@ -4,7 +4,6 @@
   "description": "News Api worked by Team Wu-Tang Coders for CareerDevs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "devStart": "nodemon server.js"
   },
   "repository": {
@@ -34,6 +33,7 @@
     "nodemon": "^2.0.2",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
-    "passport-local-mongoose": "^6.0.1"
+    "passport-local-mongoose": "^6.0.1",
+    "request": "^2.88.2"
   }
 }
