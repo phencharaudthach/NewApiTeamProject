@@ -12,9 +12,10 @@ POST http://localhost:3000/sn-users/
 Content-Type: application/json
 
 {
-    "name": "Eric Sammy",
-    "email": "Samy21@gmail.com",
-    "password": "Brown$@@20"
+    "name": "test",
+    "username": "testperson",
+    "email": "test@gmail.com",
+    "password": "passwordtest"
 }
 
 ###
