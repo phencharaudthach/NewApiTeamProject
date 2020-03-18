@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link href="./profilepage/profile.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="profile-header">
+            <div class="profile-img">
+                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png">
+
+            </div>
+            <div class="profile-nav-info">
+                <h3 class="username">
+                    John Smith
+                </h3>
+            </div>
+        </div>
+        <div class="main-bd">
+            <div class="left-side">
+                <div class="profile-side">
+
+                    <div class="profile-btn">
+
+                        <button class="message-btn"> Message
+                        </button>
+                        <button class="follow-btn"> Follow
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="right-side">
+                <div class="nav">
+                    <ul>
+                        <li class="tablinks" onclick="tabs(event, 'news-article')">News Article</li>
+                        <li class="tablinks" onclick="tabs(event, 'search-articles')">Search</li>
+                        <li class="tablinks" onclick="tabs(event, 'settings')">Settings</li>
+
+                    </ul>
+                </div>
+                <div class="profile-body">
+                    <div id="news-article" class="profiletab">
+                        <h1> Your News</h1>
+                        <button id="button">Click For List Of News</button>
+
+                        <div id="text"></div>
+                        <br>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore magni et corrupti sequi non
+                            cumque labore doloribus. Explicabo sapiente vitae quo, tempore dolores velit cupiditate
+                            itaque, voluptatem dignissimos, magni voluptates?</p>
+
+                    </div>
+                    <div id="search-articles" class="profiletab">
+                        <h1> Search News</h1>
+                        <p></p>
+                        <br>
+                        <label>
+                            <input type="text" id='searchWrd'>
+                        </label>
+                        <button id="searchBtn" >enter</button>
+                        <br>
+                        <div id='searchedResults'></div>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore magni et corrupti sequi non
+                            cumque labore doloribus. Explicabo sapiente vitae quo, tempore dolores velit cupiditate
+                            itaque, voluptatem dignissimos, magni voluptates?</p>
+                    </div>
+                    <div id="settings" class="profiletab">
+                        <h1>Settings</h1>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore magni et corrupti sequi non
+                            cumque labore doloribus. Explicabo sapiente vitae quo, tempore dolores velit cupiditate
+                            itaque, voluptatem dignissimos, magni voluptates?</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./profilepage/profile.js"></script>
+    <script src="./profilepage/search.js"></script>
+</body>
+
+</html>
