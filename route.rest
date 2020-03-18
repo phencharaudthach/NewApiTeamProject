@@ -1,6 +1,10 @@
 GET http://localhost:3000/sn-users/
 
 ###
+GET http://localhost:3000/sn-users/james holiday
+
+
+###
 Get http://localhost:3000/dj_news/searchTerm
 
 ###
@@ -8,9 +12,20 @@ POST http://localhost:3000/sn-users/
 Content-Type: application/json
 
 {
-    "username": "Nick1",
-    "email": "Nick2@gmail.com",
-    "password": "passwordtest",
+    "name": "Eric Sammy",
+    "email": "Samy21@gmail.com",
+    "password": "Brown$@@20"
 }
+
+###
+PATCH http://localhost:3000/sn-users/paul
+Content-Type: application/json
+
+{
+     "name": "James Holiday"
+}
+
+###
+DELETE http://localhost:3000/sn-users/james holiday
 
 
