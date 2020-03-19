@@ -24,16 +24,15 @@ function getData() {
 
             let list = '';
             for (var i=0;i < parsedData.articles.length; i++){
-                list += "<ul>" +"<h4>"+[i+1]+"</h4>" + 
+                list += "<br> <h4>"+[i+1]+"</h4>" + 
                 '<p> Article Name: ' +parsedData.articles[i].source.name+ '</p>'+
                 '<p> Author: '+parsedData.articles[i].author+'</p>'+
                 '<p>Title: ' +parsedData.articles[i].title+'</p>'+
-                '<p>Description: ' +parsedData.articles[i].description+'</li>'+
-                '<p>URL: ' +parsedData.articles[i].url+'</li>'+
-                '<p>URL Image: ' +parsedData.articles[i].urlToImage+'</li>'+
-                '<p>Published At: ' +parsedData.articles[i].publishedAt+'</li>'+
-                '<p>Content: ' +parsedData.articles[i].content+'</li>'+
-                "</ul>";
+                '<p>Description: ' +parsedData.articles[i].description+'</p>'+
+                '<p>URL: <a href="' +parsedData.articles[i].url+'">Click To Read</a></p>'+
+                '<p>URL Image: <img src="' +parsedData.articles[i].urlToImage+'"></p>'+
+                '<p>Published At: ' +parsedData.articles[i].publishedAt+'</p>'+
+                '<p>Content: ' +parsedData.articles[i].content+'</p>';
             }
             console.log(list);
             document.getElementById('searchedResults').innerHTML = list;

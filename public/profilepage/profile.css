@@ -116,27 +116,39 @@ button.message-btn, button.follow-btn {
     z-index: -1;
     padding: 20px;
     text-align: center;
-    word-break: break-all;
+    word-break: break-word ;
+}
+#changeName, #changeEmail,
+#uploadPhoto, #changePw, 
+#country, #searchBtn, #listButton{
+    display: inline-block;
+    float: left;
+    font-size: 20px;
+
 }
 
 label{
     display: inline-block;
     float: left;
     clear: left;
-    width: 150px;
-    text-align: center;
+    width: 175px;
+    
 }
 input {
   display: inline-block;
   float: left;
+  font-size: 20px;
 }
 
-button.changeName, button.changeEmail,
-button.uploadPhoto, button.changePw, 
-button.country {
-    display: inline-block;
-    float: left;
 
+
+img {
+    width: 340px;
+    height: 200px;
+}
+
+.profile-settings {
+    font-size: 20px ;
 }
 
 .profiletab {
