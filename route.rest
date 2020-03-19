@@ -12,27 +12,8 @@ POST http://localhost:3000/sn-users/
 Content-Type: application/json
 
 {
-    "name": "Paul Underwood",
-    "username": "PoodWorold",
-    "email": "Poodgang20@gmail.com",
+    "username": "Nick1",
+    "email": "Nick2@gmail.com",
     "password": "passwordtest",
-    "country": "Spain"
 }
-
-###
-PUT http://localhost:3000/sn-users/Paul Underwood
-Content-Type: application/json
-
-{
-     "name": "Frank UnderWood",
-     "username": "WestsideWood",
-    "email": "Pro20@gmail.com",
-    "password": "testPassword",
-    "image": "https://twitter.com/Nyeswa/photo",
-    "country": "England" 
-}
-
-###
-DELETE http://localhost:3000/sn-users/westsidewood
-
 
