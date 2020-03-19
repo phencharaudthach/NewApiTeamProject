@@ -1,7 +1,7 @@
 GET http://localhost:3000/sn-users/
 
 ###
-GET http://localhost:3000/sn-users/james holiday
+GET http://localhost:3000/sn-users/poodworold
 
 
 ###
@@ -12,21 +12,27 @@ POST http://localhost:3000/sn-users/
 Content-Type: application/json
 
 {
-    "name": "test",
-    "username": "testperson",
-    "email": "test@gmail.com",
-    "password": "passwordtest"
+    "name": "Paul Underwood",
+    "username": "PoodWorold",
+    "email": "Poodgang20@gmail.com",
+    "password": "passwordtest",
+    "country": "Spain"
 }
 
 ###
-PATCH http://localhost:3000/sn-users/paul
+PUT http://localhost:3000/sn-users/Paul Underwood
 Content-Type: application/json
 
 {
-     "name": "James Holiday"
+     "name": "Frank UnderWood",
+     "username": "WestsideWood",
+    "email": "Pro20@gmail.com",
+    "password": "testPassword",
+    "image": "https://twitter.com/Nyeswa/photo",
+    "country": "England" 
 }
 
 ###
-DELETE http://localhost:3000/sn-users/james holiday
+DELETE http://localhost:3000/sn-users/westsidewood
 
 
