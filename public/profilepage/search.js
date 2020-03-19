@@ -1,35 +1,16 @@
-function tabs(evt, tabName) {
-  // Declare all variables
-  var i, profiletab, tablinks;
-
-  // Get all elements with class="tabcontent" and hide them
-  profiletab = document.getElementsByClassName("profiletab");
-  for (i = 0; i < profiletab.length; i++) {
-    profiletab[i].style.display = "none";
-  }
-
-  // Get all elements with class="tablinks" and remove the class "active"
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-
-  // Show the current tab, and add an "active" class to the button that opened the tab
-  document.getElementById(tabName).style.display = "block";
-  evt.currentTarget.className += " active";
-}
-
-document.getElementById("button").addEventListener("click", getData);
+document.getElementById("searchBtn").addEventListener("click", getData);
 
 function getData() {
     //Step 1: initialize a New XHR object
     var xhrObj = new XMLHttpRequest();
    // console.log(xhrObj);
-
+    var keyWord = document.getElementById('searchWrd').value;
     //Step 2: xhr.open(requestType, URL, asyncBool)
-    xhrObj.open('GET', 'http://newsapi.org/v2/top-headlines?' +
-  'country=us&' +
-  'apiKey=0347c2b176094a9d97c532469f456baa', true);
+    xhrObj.open('GET', 'http://newsapi.org/v2/everything?' +
+    'q='+keyWord+'&' +
+    'from=2020-03-17&' +
+    'sortBy=popularity&' +
+    'apiKey=0347c2b176094a9d97c532469f456baa', true);
 
     // Step 3: Wait for transfer to load. 
     xhrObj.onload = function () {
@@ -55,8 +36,8 @@ function getData() {
                 "</ul>";
             }
             console.log(list);
-            document.getElementById('text').innerHTML = list;
-
+            document.getElementById('searchedResults').innerHTML = list;
+            
             }
 
     }
