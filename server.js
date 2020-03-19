@@ -27,11 +27,7 @@ const indexRouter = require('./routes/index')
 
  app.use(express.json());
  app.use("/sn-users", userRouter);
-<<<<<<< HEAD
-//  app.use("/dj_news", newsSearchRouter);
-=======
  app.use("/dj_news", newsSearchRouter);
->>>>>>> profile_page_v1.0
 app.use(express.static('./public'))
 
 //Connect to Database
