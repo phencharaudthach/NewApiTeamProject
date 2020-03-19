@@ -113,10 +113,30 @@ button.message-btn, button.follow-btn {
 }
 
 .profile-body {
-    width: 100%;
     z-index: -1;
     padding: 20px;
+    text-align: center;
     word-break: break-all;
+}
+
+label{
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 150px;
+    text-align: center;
+}
+input {
+  display: inline-block;
+  float: left;
+}
+
+button.changeName, button.changeEmail,
+button.uploadPhoto, button.changePw, 
+button.country {
+    display: inline-block;
+    float: left;
+
 }
 
 .profiletab {
@@ -127,5 +147,6 @@ button.message-btn, button.follow-btn {
     padding: 20px;
     width: 100%;
     text-align: center;
+    list-style-type: none;
     
 }

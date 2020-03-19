@@ -46,16 +46,16 @@
                 <div class="profile-body">
                     <div id="news-article" class="profiletab">
                         <h1> Your News</h1>
+                        <br>
                         <button id="button">Click For List Of News</button>
 
                         <div id="text"></div>
                         <br>
-                        <p></p>
 
                     </div>
                     <div id="search-articles" class="profiletab">
                         <h1> Search News</h1>
-                        <p></p>
+                        
                         <br>
                         <label>
                             <input type="text" id='searchWrd'>
@@ -67,14 +67,15 @@
                     </div>
                     <div id="settings" class="profiletab">
                         <h1>Settings</h1>
+                        <br>
                         <p></p>
-                        <ul>
-                            <li>Change Name</li>
-                            <li>Upload photo</li>
-                            <li>Change email</li>
-                            <li>Change password</li>
-                            <li>Enter Country</li>
-                        </ul>
+                        <div class="profile-settings">
+                            <label>Change Name:</label> <input type="text"> <button class="changeName">Enter</button>
+                            <label>Upload photo: </label><input type="text"> <button class="uploadPhoto">Enter</button>
+                            <label>Change email: </label><input type="text"> <button class="changeEmail">Enter</button>
+                            <label>Change password: </label> <input type="text"> <button class="changePw">Enter</button>
+                            <label>Enter Country: </label><input type="text"> <button class="country">Enter</button>
+                        </div>
                     </div>
                 </div>
             </div>
