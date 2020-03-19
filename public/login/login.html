@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h2>Please login</h2>
@@ -13,5 +14,41 @@
         <a href="#contact">Contact</a>
         <a href="#about">About</a>
     </div>
+    <section>
+    <div class="layout">
+      <form>
+        <input id="emailOrNumber"type="text" placeholder="Mobile Number or Email">
+        <div class= "passwordField">
+          <input id="emailLogin" type="password" placeholder="Password">
+        </div>
+        <button id="logIn" type="submit">Log in</button>
+        <button id="newAccount" type="submit">Create New Account</button>
+      </form>
+    <div class="containerColor">
+        <h2> Let us know more about yourself !</h2>
+        <form id="criticalInfo"> 
+                <div class="nameInfo">
+                    <label id="nameLabel" for="name">* First Name: </label>
+                    <input class="userInfo"type="text" name="Name" placeholder="Enter your First Name">
+                </div>
+                <div class="nameInfo">
+                    <label id="nameLabel" for="name">* Last Name: </label>
+                    <input class="userInfo" type="text"name="Name" placeholder="Enter your Last Name">
+                </div>
+                <div class="nameInfo">
+                    <label id="nameLabel" for="name">* Email </label>
+                    <input class="userInfo" type="text" name="Name" placeholder="Enter your Email">
+                </div>
+                <div class="nameInfo">
+                    <label id="nameLabel" for="name">* Password </label>
+                    <input class="userInfo" type="text" name="Name" placeholder="Create Password">
+                </div>
+                <div>
+                <buttton id="signUp" type="submit">Sign Up!</button>
+                </div>
+    </div>
+</section>
+</div>
+
 </body>
 </html>
