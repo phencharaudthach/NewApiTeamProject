@@ -1,28 +1,39 @@
 const express = require("express");
-// const uniqueValidator = require('mongoose-unique-validator');
-// const bcrypt = require('bcrypt-nodejs')
 const router = express.Router();
-// const User = require("../models/user");
-const User= require('../models/user');
+const passport = require('passport')
+const User = require('../models/user');
+
+router.post('/', function(req, res) { 
+	
+	Users=new User({email: req.body.email, username: req.body.username, name: req.body.name}); 
+
+		User.register(Users, req.body.password, function(err, user) { 
+			if (err) { 
+			res.json({success:false, message:"Your account could not be saved. Error: ", err}) 
+			}else{ 
+			res.json({success: true, message: "Your account has been saved"}) 
+			} 
+		}); 
+}); 
 
 
-//Create new User
-router.post('/', async (req, res) => {
-// const {  name, email, password } = req.body;
-    const user = new User({
-      name: req.body.name,
-      email: req.body.email,
-      password: req.body.password
-    });
+// //Create new User
+// router.post('/', async (req, res) => {
+// // const {  name, email, password } = req.body;
+//     const user = new User({
+//       name: req.body.name,
+//       email: req.body.email,
+//       password: req.body.password
+//     });
 
-    try{
-      console.log("Hello World");
-        const newUser = await user.save();
-        res.status(201).json(newUser);
-    }catch (err) {
-        res.status(400).json({ message: err.message });
-    }
-});
+//     try{
+//       console.log("Hello World");
+//         const newUser = await user.save();
+//         res.status(201).json(newUser);
+//     }catch (err) {
+//         res.status(400).json({ message: err.message });
+//     }
+// });
 
 //Get All User
 router.get("/", async (req, res) => {
