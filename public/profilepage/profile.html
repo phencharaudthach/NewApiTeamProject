@@ -9,11 +9,19 @@
 </head>
 
 <body>
+    <div class="topnav">
+        <a href="../index.html">Home</a>
+        <a class="active" href="./profile.html">Profile Page</a>
+        <a href="../login/login.html">Login Page</a>
+        <a href="#contact">Contact</a>
+        <a href="#about">About</a>
+    </div>
+
     <div class="container">
         <div class="profile-header">
             <div class="profile-img">
                 <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png">
-            
+
             </div>
             <div class="profile-nav-info">
                 <h3 class="username">
@@ -21,12 +29,12 @@
                 </h3>
             </div>
         </div>
-                <div class="main-bd">
-                    <div class="left-side">
-                    <div class="profile-side">
-                        
+        <div class="main-bd">
+            <div class="left-side">
+                <div class="profile-side">
+
                     <div class="profile-btn">
-                        
+
                         <button class="message-btn"> Message
                         </button>
                         <button class="follow-btn"> Follow
@@ -34,39 +42,55 @@
                     </div>
                 </div>
             </div>
-                <div class="right-side">
+            <div class="right-side">
                 <div class="nav">
                     <ul>
-                        <li onclick="tabs(0)" class="liked-newsArticle">News Article</li>
-                        <li onclick="tabs(1)" class="search-articles">Search</li>
-                        <li onclick="tabs(2)" class="user-settings">Settings</li>
+                        <li class="tablinks" onclick="tabs(event, 'news-article')">News Article</li>
+                        <li class="tablinks" onclick="tabs(event, 'search-articles')">Search</li>
+                        <li class="tablinks" onclick="tabs(event, 'settings')">Settings</li>
 
                     </ul>
-                </div> 
+                </div>
                 <div class="profile-body">
-                    <div class="profile-newsArticle tab">
+                    <div id="news-article" class="profiletab">
                         <h1> Your News</h1>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore magni et corrupti sequi non
-                            cumque labore doloribus. Explicabo sapiente vitae quo, tempore dolores velit cupiditate
-                            itaque, voluptatem dignissimos, magni voluptates?</p>
+                        <button id="button">Click For List Of News</button>
+
+                        <div id="text"></div>
+                        <br>
+                        <p></p>
+
                     </div>
-                    <div class="profile-search tab">
-                        <h1> Search News <Article></Article></h1>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore magni et corrupti sequi non
-                            cumque labore doloribus. Explicabo sapiente vitae quo, tempore dolores velit cupiditate
-                            itaque, voluptatem dignissimos, magni voluptates?</p>
+                    <div id="search-articles" class="profiletab">
+                        <h1> Search News</h1>
+                        <p></p>
+                        <br>
+                        <label>
+                            <input type="text" id='searchWrd'>
+                        </label>
+                        <button id="searchBtn" >enter</button>
+                        <br>
+                        <div id='searchedResults'></div>
+                        <p></p>
                     </div>
-                    <div class="profile-settings tab">
+                    <div id="settings" class="profiletab">
                         <h1>Settings</h1>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore magni et corrupti sequi non
-                            cumque labore doloribus. Explicabo sapiente vitae quo, tempore dolores velit cupiditate
-                            itaque, voluptatem dignissimos, magni voluptates?</p>
+                        <p></p>
+                        <ul>
+                            <li>Change Name</li>
+                            <li>Upload photo</li>
+                            <li>Change email</li>
+                            <li>Change password</li>
+                            <li>Enter Country</li>
+                        </ul>
                     </div>
                 </div>
             </div>
+        </div>
     </div>
-</div>
 
+    <script src="profile.js"></script>
+    <script src="search.js"></script>
 </body>
 
 </html>
