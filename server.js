@@ -21,13 +21,13 @@ const LocalStrategy = require('passport-local').Strategy;
 passport.use(new LocalStrategy(User.authenticate())); 
 
 
-// const indexRouter = require('./routes/index')
+const indexRouter = require('./routes/index')
  const userRouter = require('./routes/sn-users')
-//  const newsSearchRouter = require('./routes/dj_news');
+ const newsSearchRouter = require('./routes/dj_news');
 
  app.use(express.json());
  app.use("/sn-users", userRouter);
-//  app.use("/dj_news", newsSearchRouter);
+ app.use("/dj_news", newsSearchRouter);
 app.use(express.static('./public'))
 
 //Connect to Database
