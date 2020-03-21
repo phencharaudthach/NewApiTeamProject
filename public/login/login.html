@@ -9,7 +9,7 @@
 <body>
     <h2>Please login</h2>
     <div class="topnav">
-        <a href="/">Home</a>
+        <a href="../index.html">Home</a>
         <a class="active" href="login.html">Login page</a>
         <a href="#contact">Contact</a>
         <a href="#about">About</a>
@@ -24,16 +24,17 @@
         <button id="logIn" type="submit">Log in</button>
         <button id="newAccount" type="submit">Create New Account</button>
       </form>
+      
     <div class="containerColor">
-        <h2> Let us know more about yourself !</h2>
-        <form id="criticalInfo"> 
+        <form id="criticalInfo" onsubmit="return validateForm()"
         <!-- User input for backend. Username, name, email and password-->
+        <h2> Don't have an account? Sign up!!</h2>
                 <div class="nameInfo">
-                    <label id="nameLabel" for="name">* First Name: </label>
+                    <label id="nameLabel" for="name">* Name: </label>
                     <input class="userInfo"type="text" name="Name" placeholder="Enter your First Name">
                 </div>
                 <div class="nameInfo">
-                    <label id="nameLabel" for="name">* Last Name: </label>
+                    <label id="nameLabel" for="name">* Username: </label>
                     <input class="userInfo" type="text"name="Name" placeholder="Enter your Last Name">
                 </div>
                 <div class="nameInfo">
@@ -52,4 +53,7 @@
 </div>
 
 </body>
+
+<script src="login.js"></script>
+
 </html>
