@@ -4,8 +4,13 @@ const passport = require('passport')
 const User = require('../models/user');
 
 router.post('/', function(req, res) { 
-	
-	Users=new User({email: req.body.email, username: req.body.username, name: req.body.name}); 
+  Users=new User({
+    username: req.body.username,
+    email: req.body.email,
+    name: req.body.name,
+    image: req.body.image,
+    country: req.body.country
+    }); 
 
 		User.register(Users, req.body.password, function(err, user) { 
 			if (err) { 
@@ -16,6 +21,28 @@ router.post('/', function(req, res) {
 		}); 
 }); 
 
+router.post('/login', passport.authenticate('local'), (req, res) => {
+  User.findOne({
+    username: req.body.username
+  }, (err, person) => {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'application/json');
+    res.json({
+      success: true,
+      status: 'You are successfully logged in!'
+    });
+  })
+});
+
+router.get("/logout", function(req, res){    
+  req.session.destroy()
+  req.logout();    
+  res.clearCookie('session-id');
+  res.json({
+    message: 'You are successfully logged out!'
+  });
+  res.redirect("/");
+});
 
 // //Create new User
 // router.post('/', async (req, res) => {
@@ -46,53 +73,54 @@ router.get("/", async (req, res) => {
   }
 });
 
+
+//Note: for some reason cannot logout with get username code active
+//may need to move the logout route???
+
 //  Get One User
-// //Read User By Name
-// router.get("/:name", getUserByName, (req, res) => {
-//     res.json(res.user);
+// //Read User By userName
+
+// router.get("/:username", async (req, res) => {
+//   let user
+//   let username = req.params.username;
+//   try {
+//     user = await User.findOne({ username });
+//     if (user == null) {
+//       return res.status(404).json({ message: "Cannot Find User's username" });
+//     }
+//   }catch (err) {
+//     res.status(400).json({ message: err.message });
+//   }
+//     res.json(user);
 //   });
 
-//   //Update Name
-//   router.patch("/:name", getUserByName, async (req, res) => {
-//     if (req.body.name != null) {
-//       res.user.name = req.body.name;
-//     }
-//     if (req.body.email != null) {
-//       res.user.email = req.body.email;
-//     }
-//     if (req.body.password != null) {
-//         res.user.token = req.body.password;
-//       }
-//     try {
-//       const updatedUser = await res.user.save();
-//       res.json(updatedUser);
-//     } catch (err) {
-//       res.status(400).json({ message: err.message });
-//     }
-//   });
-  
-//   //Delete
-//   router.delete("/:name", getUserByName, async (req, res) => {
-//     try {
-//       await res.user.remove();
-//       res.json({ message: "Deleted User Profile" });
-//     } catch (err) {
-//       res.status(500).json({ message: err.message });
-//     }
-//   });
-  
-<<<<<<< HEAD
-<<<<<<< HEAD
-  //get one by username function
-  async function getUserByUsername(req, res, next) {
-    let user;
-    const username = req.params.username;
-=======
+
+
+  //  Update Name
+  router.put("/:name", async (req, res) => {
+    const updatedUser = await User.findOneAndUpdate(req.params.name,{
+        username: req.body.username,
+        email: req.body.email,
+        name: req.body.name,
+        image: req.body.image,
+        country: req.body.country
+        }, { new: true });
+
+        if(!updatedUser) return res.status(404).send("Can Not Update User With that ID");
+        res.json(updatedUser);
+      });
+    
+     //Delete
+  router.delete("/:username", async (req, res) => {
+    const user = await User.findOneAndRemove(req.params.username);
+    if(!user) return res.status(404).send(`Deleted User's Profile`)
+  res.json(user)
+ });
+ 
   //get one by Name function
   async function getUserByName(req, res, next) {
     let user;
     const name = req.params.name;
->>>>>>> c65ba43654fb0a540f29dce3551bf850819b2162
     try {
       user = await User.findOne({ name });
       if (user == null) {
@@ -104,7 +132,7 @@ router.get("/", async (req, res) => {
     res.user = user;
     next();
   }
-=======
+
 //   //get one by Name function
 //   async function getUserByName(req, res, next) {
 //     let user;
@@ -120,6 +148,6 @@ router.get("/", async (req, res) => {
 //     res.user = user;
 //     next();
 //   }
->>>>>>> 999a1f3f7b209bb747f080550764069a6f44d4ee
-  
+
+
   module.exports = router;
