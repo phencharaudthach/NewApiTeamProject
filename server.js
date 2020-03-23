@@ -1,24 +1,28 @@
 const express = require('express')
 const passport = require('passport')
+const LocalStrategy = require('passport-local').Strategy
 const app = express();
 const session = require('express-session');
-const User = require('./models/user'); 
+const User = require('./models/user');
 require('dotenv/config');
 require('./config/passport.js')
 
 //MiddleWare
 
-// app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.urlencoded({ extended: true }));
 
 //middleware to initialize passport for authentication
 app.use(passport.initialize());
 //Middleware to keep track of users session
-app.use(passport.session());
+app.use(session(
+    { secret:"Hello World, this is a session",    
+     resave: false,    
+     saveUninitialized: false    }));
+passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser()); 
 passport.deserializeUser(User.deserializeUser()); 
 
-const LocalStrategy = require('passport-local').Strategy; 
-passport.use(new LocalStrategy(User.authenticate())); 
+// passport.use(new LocalStrategy(User.authenticate())); 
 
 
 const indexRouter = require('./routes/index')

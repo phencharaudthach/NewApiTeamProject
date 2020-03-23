@@ -20,6 +20,30 @@ router.post('/', function(req, res) {
 			} 
 		}); 
 }); 
+
+router.post('/login', passport.authenticate('local'), (req, res) => {
+  User.findOne({
+    username: req.body.username
+  }, (err, person) => {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'application/json');
+    res.json({
+      success: true,
+      status: 'You are successfully logged in!'
+    });
+  })
+});
+
+router.get("/logout", function(req, res){    
+  req.session.destroy()
+  req.logout();    
+  res.clearCookie('session-id');
+  res.json({
+    message: 'You are successfully logged out!'
+  });
+  res.redirect("/");
+});
+
 // //Create new User
 // router.post('/', async (req, res) => {
 // // const {  name, email, password } = req.body;
@@ -49,22 +73,26 @@ router.get("/", async (req, res) => {
   }
 });
 
+
+//Node: for some reason cannot logout with get username code active
+//may need to move the logout route???
+
 //  Get One User
 // //Read User By userName
 
-router.get("/:username", async (req, res) => {
-  let user
-  let username = req.params.username;
-  try {
-    user = await User.findOne({ username });
-    if (user == null) {
-      return res.status(404).json({ message: "Cannot Find User's username" });
-    }
-  }catch (err) {
-    res.status(400).json({ message: err.message });
-  }
-    res.json(user);
-  });
+// router.get("/:username", async (req, res) => {
+//   let user
+//   let username = req.params.username;
+//   try {
+//     user = await User.findOne({ username });
+//     if (user == null) {
+//       return res.status(404).json({ message: "Cannot Find User's username" });
+//     }
+//   }catch (err) {
+//     res.status(400).json({ message: err.message });
+//   }
+//     res.json(user);
+//   });
 
 
 
