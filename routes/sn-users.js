@@ -74,7 +74,7 @@ router.get("/", async (req, res) => {
 });
 
 
-//Node: for some reason cannot logout with get username code active
+//Note: for some reason cannot logout with get username code active
 //may need to move the logout route???
 
 //  Get One User
