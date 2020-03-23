@@ -21,18 +21,22 @@ const LocalStrategy = require('passport-local').Strategy;
 passport.use(new LocalStrategy(User.authenticate())); 
 
 
-// const indexRouter = require('./routes/index')
+const indexRouter = require('./routes/index')
  const userRouter = require('./routes/sn-users')
-//  const newsSearchRouter = require('./routes/dj_news');
+ const newsSearchRouter = require('./routes/dj_news');
 
  app.use(express.json());
  app.use("/sn-users", userRouter);
-//  app.use("/dj_news", newsSearchRouter);
+ app.use("/dj_news", newsSearchRouter);
 app.use(express.static('./public'))
 
 //Connect to Database
 const mongoose = require('mongoose');
-mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
+mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, 
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: true
+ });
 const db = mongoose.connection;
 db.on('error', error => console.log(error));
 db.once('open', () => console.log('Connected to the database'));
