@@ -69,19 +69,19 @@ router.get("/:username", async (req, res) => {
 
 
 
-  //  Update Name
-  router.put("/:name", async (req, res) => {
-    const updatedUser = await User.findOneAndUpdate(req.params.name,{
-        username: req.body.username,
-        email: req.body.email,
-        name: req.body.name,
-        image: req.body.image,
-        country: req.body.country
-        }, { new: true });
+  // //  Update Name
+  // router.put("/:name", async (req, res) => {
+  //   const updatedUser = await User.findOneAndUpdate(req.params.name,{
+  //       username: req.body.username,
+  //       email: req.body.email,
+  //       name: req.body.name,
+  //       image: req.body.image,
+  //       country: req.body.country
+  //       }, { new: true });
 
-        if(!updatedUser) return res.status(404).send("Can Not Update User With that ID");
-        res.json(updatedUser);
-      });
+  //       if(!updatedUser) return res.status(404).send("Can Not Update User With that ID");
+  //       res.json(updatedUser);
+  //     });
 
       // Updating One
 router.patch('/:name', getUser, async (req, res) => {
@@ -117,10 +117,12 @@ if (req.body.country != null && req.body.country != "") {
     if(!user) return res.status(404).send(`Deleted User's Profile`)
   res.json(user)
  });
+
+ // getUser function
   
  async function getUser (req, res, next) {
   try {
-      user = await User.findOneAndUpdate(req.params.name)
+      user = await User.findOne(req.params.name)
       if (user == null) {
           return res.status(404).json({message: 'Cannot find user'})
       }

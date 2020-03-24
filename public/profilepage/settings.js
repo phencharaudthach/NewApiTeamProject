@@ -1,5 +1,5 @@
 const updateBtn = document.getElementById('update-Btn');
-const getBtn = document.getElementById('testButton');
+// const getBtn = document.getElementById('testButton');
 
 const sendHttpRequest = (method, url, data) => {
     const promise = new Promise((resolve, reject) => {
@@ -31,15 +31,15 @@ const sendHttpRequest = (method, url, data) => {
 
 var getName = document.getElementById("testName").value;
 
-const getUserData = () => {
-    sendHttpRequest('GET', 'http://localhost:3000/sn-users/'+getName).then(responseData => {
-        // var parsedData = JSON.parse(responseData);
-        // console.log(responseData);
+// const getUserData = () => {
+//     sendHttpRequest('GET', 'http://localhost:3000/sn-users/'+getName).then(responseData => {
+//         // var parsedData = JSON.parse(responseData);
+//         // console.log(responseData);
                     
-                    console.log(responseData.name);
-                    // document.getElementById('testName').innerHTML = responseData[0].username;
-    });
-};
+//                     console.log(responseData.name);
+//                     // document.getElementById('testName').innerHTML = responseData[0].username;
+//     });
+// };
 
 const updateData = () => {
     
@@ -61,4 +61,4 @@ const updateData = () => {
 };
 
 updateBtn.addEventListener('click', updateData);
-getBtn.addEventListener('click', getUserData);
+// getBtn.addEventListener('click', getUserData);
