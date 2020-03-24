@@ -43,7 +43,7 @@ var getName = document.getElementById("testName").value;
 
 const updateData = () => {
     
-    sendHttpRequest('PATCH', 'http://localhost:3000/sn-users/'+getName, {
+    sendHttpRequest('PATCH', 'http://localhost:3000/sn-users/'+'Nick+Smith', {
         
         name: document.getElementById("changingName").value,
         username: document.getElementById("changingUsername").value,
@@ -53,7 +53,7 @@ const updateData = () => {
 
     }).then(responseData => {
         console.log(responseData);
-        console.log(getName);
+        // console.log(getName);
     })
     .catch(err => {
         console.log(err);
