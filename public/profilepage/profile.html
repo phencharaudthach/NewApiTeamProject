@@ -16,9 +16,7 @@
 
             </div>
             <div class="profile-nav-info">
-                <h3 class="username">
-                    John Smith
-                </h3>
+                <h3 class="username" id="testName">John Smith</h3>
             </div>
         </div>
         <div class="main-bd">
@@ -27,7 +25,7 @@
 
                     <div class="profile-btn">
 
-                        <button class="message-btn"> Message
+                        <button class="message-btn" id="testButton"> Message
                         </button>
                         <button class="follow-btn"> Follow
                         </button>
@@ -71,18 +69,23 @@
                         <br>
                         <p></p>
                         <div class="profile-settings">
-                            <label>Change Name:</label> <input type="text"> <button id="changeName">Submit</button>
-                            <label>Upload photo: </label><input type="text"> <button id="uploadPhoto">Submit</button>
-                            <label>Change email: </label><input type="text"> <button id="changeEmail">Submit</button>
-                            <label>Change password: </label> <input type="text"> <button id="changePw">Submit</button>
-                            <label>Enter Country: </label><input type="text"> <button id="country">Submit</button>
+                            <label>Change Name:</label> <input type="text" id="changingName"> 
+                            <label>Change email: </label><input type="text" id="changingEmail"> 
+                            <label>Change username: </label><input type="text" id="changingUsername"> 
+                            <label>Change password: </label> <input type="text" id="changingPw">
+                            <label>Upload photo: </label><input type="text" id="changingPhoto"> 
+                            <label>Enter Country: </label><input type="text" id="changingCountry"> 
+                            <br>
+                          
+                            <button id="update-Btn">Submit</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
+    
+    <script src="settings.js"></script>
     <script src="profile.js"></script>
     <script src="search.js"></script>
 </body>

@@ -1,25 +1,64 @@
-document.getElementById("searchBtn").addEventListener("click", getData);
+const updateBtn = document.getElementById('update-Btn');
+const getBtn = document.getElementById('testButton');
 
-function getData() {
-    //Step 1: initialize a New XHR object
-    var xhrObj = new XMLHttpRequest();
-   // console.log(xhrObj);
-    //Step 2: xhr.open(requestType, URL, asyncBool)
-    xhrObj.open('POST', 'http://localhost:3000/sn-users', true);
+const sendHttpRequest = (method, url, data) => {
+    const promise = new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open(method, url);
 
-    // Step 3: Wait for transfer to load. 
-    xhrObj.onload = function () {
+        xhr.responseType = 'json';
 
-        if (xhrObj.status == 200) {
-            // console.log(xhrObj.responseText);
+        if (data) {
+            xhr.setRequestHeader('Content-Type', 'application/json');
+        }
 
-            // step 5: convert text data to JSON
-            var parsedData = JSON.parse(xhrObj.responseText); 
-            console.log(parsedData);
-
+        xhr.onload = () => {
+            if (xhr.status >= 400) {
+                reject(xhr.response);
+            } else {
+            resolve(xhr.response);
             }
+        };
 
-    }
-    // Step: 4
-    xhrObj.send();
-}
+        xhr.onerror = () => {
+            reject('Something went wrong');
+        };
+
+        xhr.send(JSON.stringify(data));
+    });
+    return promise;
+};
+
+var getName = document.getElementById("testName").value;
+
+const getUserData = () => {
+    sendHttpRequest('GET', 'http://localhost:3000/sn-users/'+getName).then(responseData => {
+        // var parsedData = JSON.parse(responseData);
+        // console.log(responseData);
+                    
+                    console.log(responseData.name);
+                    // document.getElementById('testName').innerHTML = responseData[0].username;
+    });
+};
+
+const updateData = () => {
+    
+    sendHttpRequest('PATCH', 'http://localhost:3000/sn-users/'+getName, {
+        
+        name: document.getElementById("changingName").value,
+        username: document.getElementById("changingUsername").value,
+        email: document.getElementById("changingEmail").value,
+        image: document.getElementById("changingPhoto").value,
+        country: document.getElementById("changingCountry").value,
+
+    }).then(responseData => {
+        console.log(responseData);
+        console.log(getName);
+    })
+    .catch(err => {
+        console.log(err);
+    })
+};
+
+updateBtn.addEventListener('click', updateData);
+getBtn.addEventListener('click', getUserData);

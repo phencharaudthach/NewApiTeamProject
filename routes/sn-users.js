@@ -8,6 +8,7 @@ router.post('/', function(req, res) {
     username: req.body.username,
     email: req.body.email,
     name: req.body.name,
+    password: req.body.password,
     image: req.body.image,
     country: req.body.country
     }); 
@@ -81,14 +82,54 @@ router.get("/:username", async (req, res) => {
         if(!updatedUser) return res.status(404).send("Can Not Update User With that ID");
         res.json(updatedUser);
       });
+
+      // Updating One
+router.patch('/:name', getUser, async (req, res) => {
+  if (req.body.name != null && req.body.name != "") {
+      res.user.name = req.body.name;
+  }
+  if ( req.body.username != null && req.body.name != ""){
+      res.user.username = req.body.username;
+  }
+  if (req.body.email != null && req.body.email != "") {
+    res.user.email = req.body.email;
+}
+if ( req.body.password != null && req.body.password != ""){
+    res.user.password = req.body.password;
+}
+if (req.body.image != null && req.body.image != "") {
+  res.user.image = req.body.image;
+}
+if (req.body.country != null && req.body.country != "") {
+  res.user.country = req.body.country;
+}
+  try {
+      const updatedUser = await res.user.save();
+      res.json(updatedUser);
+  } catch (error) {
+      res.status(400).json({message: err.message})
+  }
+});
     
      //Delete
-  router.delete("/:username", async (req, res) => {
-    const user = await User.findOneAndRemove(req.params.username);
+  router.delete("/:id", async (req, res) => {
+    const user = await User.findOneAndRemove(req.params.id);
     if(!user) return res.status(404).send(`Deleted User's Profile`)
   res.json(user)
  });
   
+ async function getUser (req, res, next) {
+  try {
+      user = await User.findOneAndUpdate(req.params.name)
+      if (user == null) {
+          return res.status(404).json({message: 'Cannot find user'})
+      }
+  } catch (err) { 
+      return res.status(500).json({message: err.message})
+  }
 
-  
+  res.user = user; 
+  next();
+}
+
   module.exports = router;
