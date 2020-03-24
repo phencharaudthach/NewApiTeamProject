@@ -64,7 +64,7 @@ router.get("/logout", function(req, res){
 
 //Get All User
 router.get("/", async (req, res) => {
-  // console.log("Hello World");
+  // console.log("H1ello World");
   try {
     const users = await User.find();
     res.json(users);
