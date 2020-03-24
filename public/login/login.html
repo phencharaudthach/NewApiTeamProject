@@ -3,17 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="styles.css">
     <title>Login Page</title>
-</head>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Liu+Jian+Mao+Cao&display=swap" rel="stylesheet">
+    </head>
 <body>
-    <h2>Please login</h2>
+<nav>
     <div class="topnav">
-        <a href="/">Home</a>
-        <a href="./profilepage/profile.html">Profile Page</a>
-        <a class="active" href="login.html">Login page</a>
-        <a href="#contact">Contact</a>
-        <a href="#about">About</a>
+    <h4>Wu-Tang</h4>
     </div>
+    <ul class="navLinks">
+        <li><a href="../index.html">Home</a></li>
+        <li><a class="active" href="login.html">Login</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#about">About</a></li>
+        </ul>
+        <div class="menuBars">
+        <div class="barOne"></div>
+        <div class="barTwo"></div>
+        <div class="barThree"></div>
+        </div>
+    </nav>
+    <section>
+    <div class="layout">
+    <form>
+    <h2>Please login</h2>
+        <input id="emailOrNumber"type="text" placeholder=" Email">
+        <div class= "passwordField">
+          <input id="emailLogin" type="password" placeholder="Password">
+        </div>
+        <button id="logIn" class="buttonStyle"type="submit">Log in</button>
+        <button id="newAccount" class="buttonStyle" type="submit">Create New Account</button>
+      </form>
+      
+    <div class="containerColor">
+        <form id="criticalInfo" onsubmit="return validateForm()"
+        <h2> Don't have an account? Sign up!!</h2>
+                <div class="nameInfo">
+                <div id="error"></div>
+                    <label class="nameLabel">* Name: 
+                    <input id="fullName"type="text" name="Name" placeholder="Enter your First Name">
+                    </label>
+                </div>
+                <div class="nameInfo">
+                    <div id="error"></div>
+                    <label class="nameLabel">* Username: 
+                    <input id="uniqueName" type="text" name="Name" placeholder="Enter your Last Name">
+                    </label>
+                </div>
+                <div class="nameInfo">
+                <div id="error"></div>
+                    <label class="nameLabel">* Email 
+                    <input id="userEmail" type="text" name="Name" placeholder="Enter your Email">
+                    </label>
+                </div>
+                <div class="nameInfo">
+                <div id="error"></div>
+                    <label class="nameLabel">* Password 
+                    <input id="userPassword" type="password" name="Name" placeholder="Create Password">
+                    </label>
+                </div>
+                <div>
+                <buttton id="signUp" type="submit">Sign Up!</button>
+                </div>
+    </div>
+</section>
+</div>
+
 </body>
+<script src="nav.js"></script>
+<script src="login.js"></script>
+
 </html>
