@@ -1,6 +1,10 @@
 GET http://localhost:3000/sn-users/
 
 ###
+GET http://localhost:3000/sn-users/poodworold
+
+
+###
 Get http://localhost:3000/dj_news/searchTerm
 
 ###

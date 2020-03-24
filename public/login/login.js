@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 function loginPage() {
     var fullName = document.getElementById("fullname".value);
     var userName = document.getElementById("unqiueName".value);
@@ -32,4 +36,8 @@ function loginPage() {
 
 document.getElementById("signUp").onclick = function() {
     loginPage();   
+<<<<<<< HEAD
   };            
+=======
+  };            
+>>>>>>> master

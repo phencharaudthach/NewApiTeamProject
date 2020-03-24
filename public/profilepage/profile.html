@@ -9,14 +9,6 @@
 </head>
 
 <body>
-    <div class="topnav">
-        <a href="../index.html">Home</a>
-        <a class="active" href="./profile.html">Profile Page</a>
-        <a href="../login/login.html">Login Page</a>
-        <a href="#contact">Contact</a>
-        <a href="#about">About</a>
-    </div>
-
     <div class="container">
         <div class="profile-header">
             <div class="profile-img">
@@ -54,35 +46,37 @@
                 <div class="profile-body">
                     <div id="news-article" class="profiletab">
                         <h1> Your News</h1>
-                        <button id="button">Click For List Of News</button>
-
+                        <br>
+                        <button id="listButton">Click For List Of News</button>
+                        <br>
                         <div id="text"></div>
                         <br>
-                        <p></p>
 
                     </div>
                     <div id="search-articles" class="profiletab">
                         <h1> Search News</h1>
-                        <p></p>
+                        
                         <br>
-                        <label>
+                        
                             <input type="text" id='searchWrd'>
-                        </label>
+                        
                         <button id="searchBtn" >enter</button>
                         <br>
                         <div id='searchedResults'></div>
-                        <p></p>
+                        <br>
+                        <br>
                     </div>
                     <div id="settings" class="profiletab">
                         <h1>Settings</h1>
+                        <br>
                         <p></p>
-                        <ul>
-                            <li>Change Name</li>
-                            <li>Upload photo</li>
-                            <li>Change email</li>
-                            <li>Change password</li>
-                            <li>Enter Country</li>
-                        </ul>
+                        <div class="profile-settings">
+                            <label>Change Name:</label> <input type="text"> <button id="changeName">Submit</button>
+                            <label>Upload photo: </label><input type="text"> <button id="uploadPhoto">Submit</button>
+                            <label>Change email: </label><input type="text"> <button id="changeEmail">Submit</button>
+                            <label>Change password: </label> <input type="text"> <button id="changePw">Submit</button>
+                            <label>Enter Country: </label><input type="text"> <button id="country">Submit</button>
+                        </div>
                     </div>
                 </div>
             </div>
