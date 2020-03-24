@@ -1,29 +1,70 @@
 const express = require("express");
-const crypto = require('crypto')
-const jwt = require('jsonwebtoken')
 const router = express.Router();
-const User = require("../models/user");
+const passport = require('passport')
+const User = require('../models/user');
 
-//Create new User
-router.post('/', async (req, res) => {
-const {  username, email,  token, image } = req.body;
+router.post('/', function(req, res) { 
+  Users=new User({
+    username: req.body.username,
+    email: req.body.email,
+    name: req.body.name,
+    image: req.body.image,
+    country: req.body.country
+    }); 
 
-    const user = new User ({
-        username,
-        email,
-        token,
-        image
+		User.register(Users, req.body.password, function(err, user) { 
+			if (err) { 
+			res.json({success:false, message:"Your account could not be saved. Error: ", err}) 
+			}else{ 
+			res.json({success: true, message: "Your account has been saved"}) 
+			} 
+		}); 
+}); 
+
+router.post('/login', passport.authenticate('local'), (req, res) => {
+  User.findOne({
+    username: req.body.username
+  }, (err, person) => {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'application/json');
+    res.json({
+      success: true,
+      status: 'You are successfully logged in!'
     });
-    try {
-        const newUser = await user.save();
-        res.status(201).json(newUser)
-    } catch (err) {
-        res.status(400).json({ message: err.message });
-    }
+  })
 });
 
-//Get All Users
+router.get("/logout", function(req, res){    
+  req.session.destroy()
+  req.logout();    
+  res.clearCookie('session-id');
+  res.json({
+    message: 'You are successfully logged out!'
+  });
+  res.redirect("/");
+});
+
+// //Create new User
+// router.post('/', async (req, res) => {
+// // const {  name, email, password } = req.body;
+//     const user = new User({
+//       name: req.body.name,
+//       email: req.body.email,
+//       password: req.body.password
+//     });
+
+//     try{
+//       console.log("Hello World");
+//         const newUser = await user.save();
+//         res.status(201).json(newUser);
+//     }catch (err) {
+//         res.status(400).json({ message: err.message });
+//     }
+// });
+
+//Get All User
 router.get("/", async (req, res) => {
+  // console.log("Hello World");
   try {
     const users = await User.find();
     res.json(users);
@@ -32,53 +73,58 @@ router.get("/", async (req, res) => {
   }
 });
 
-//Get One User
-//Read User By Username
-router.get("/:username", getUserByUsername, (req, res) => {
-    res.json(res.user);
-  });
 
-  //Update Username
-  router.patch("/:username", getUserByUsername, async (req, res) => {
-    if (req.body.username != null) {
-      res.user.username = req.body.username;
-    }
-    if (req.body.email != null) {
-      res.graduate.email = req.body.email;
-    }
-    if (req.body.token != null) {
-        res.graduate.token = req.body.token;
-      }
+//Note: for some reason cannot logout with get username code active
+//may need to move the logout route???
 
-    if (req.body.image != null) {
-      res.graduate.image = req.body.image;
-    }
+//  Get One User
+// //Read User By userName
+
+// router.get("/:username", async (req, res) => {
+//   let user
+//   let username = req.params.username;
+//   try {
+//     user = await User.findOne({ username });
+//     if (user == null) {
+//       return res.status(404).json({ message: "Cannot Find User's username" });
+//     }
+//   }catch (err) {
+//     res.status(400).json({ message: err.message });
+//   }
+//     res.json(user);
+//   });
+
+
+
+  //  Update Name
+  router.put("/:name", async (req, res) => {
+    const updatedUser = await User.findOneAndUpdate(req.params.name,{
+        username: req.body.username,
+        email: req.body.email,
+        name: req.body.name,
+        image: req.body.image,
+        country: req.body.country
+        }, { new: true });
+
+        if(!updatedUser) return res.status(404).send("Can Not Update User With that ID");
+        res.json(updatedUser);
+      });
+    
+     //Delete
+  router.delete("/:username", async (req, res) => {
+    const user = await User.findOneAndRemove(req.params.username);
+    if(!user) return res.status(404).send(`Deleted User's Profile`)
+  res.json(user)
+ });
+ 
+  //get one by Name function
+  async function getUserByName(req, res, next) {
+    let user;
+    const name = req.params.name;
     try {
-      const updatedUser = await res.user.save();
-      res.json(updatedUser);
-    } catch (err) {
-      res.status(400).json({ message: err.message });
-    }
-  });
-  
-  //Delete
-  router.delete("/:username", getUserByUsername, async (req, res) => {
-    try {
-      await res.user.remove();
-      res.json({ message: "Deleted User Profile" });
-    } catch (err) {
-      res.status(500).json({ message: err.message });
-    }
-  });
-  
-  //get one by username function
-  async function getUserByUsername(req, res, next) {
-    const user;
-    const username = req.params.username;
-    try {
-      user = await User.findOne({ username });
-      if (graduate == null) {
-        return res.status(404).json({ message: "Cannot Find User" });
+      user = await User.findOne({ name });
+      if (user == null) {
+        return res.status(404).json({ message: "Cannot Find User's Name" });
       }
     } catch (err) {
       return res.status(500).json({ message: err.message });
@@ -86,6 +132,22 @@ router.get("/:username", getUserByUsername, (req, res) => {
     res.user = user;
     next();
   }
-  
-  module.exports = router;
 
+//   //get one by Name function
+//   async function getUserByName(req, res, next) {
+//     let user;
+//     let name = req.params.name;
+//     try {
+//       user = await User.findOne({ name });
+//       if (user == null) {
+//         return res.status(404).json({ message: "Cannot Find User's Name" });
+//       }
+//     } catch (err) {
+//       return res.status(500).json({ message: err.message });
+//     }
+//     res.user = user;
+//     next();
+//   }
+
+
+  module.exports = router;

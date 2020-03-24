@@ -1,4 +1,23 @@
 GET http://localhost:3000/sn-users/
 
 ###
+<<<<<<< HEAD
 Get http://localhost:3000/dj_news/searchTerm
+=======
+GET http://localhost:3000/sn-users/poodworold
+
+
+###
+Get http://localhost:3000/dj_news/searchTerm
+
+###
+POST http://localhost:3000/sn-users/
+Content-Type: application/json
+
+{
+    "username": "Nick1",
+    "email": "Nick2@gmail.com",
+    "password": "passwordtest",
+}
+
+>>>>>>> master

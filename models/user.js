@@ -1,30 +1,33 @@
-const mongoose = require('mongoose')
-const uniqueValidator = require('mongoose-unique-validator')
-const bcrypt = require('bcrypt-nodejs')
+const mongoose = require('mongoose');
+const passportLocalMongoose = require('passport-local-mongoose')
+
 //User schema
 const userSchema = new mongoose.Schema ({
-    name: {
+    name: String,
+    username: {
         type: String,
         lowercase: true, 
-        unique: true,
-        required: [true, "can't be blank"], 
-        match: [/^[a-zA-Z0-9]+$/, 'is invalid']
+        // unique: true
+        // required: [true, "can't be blank"] 
+        // match: [/^[a-zA-Z0-9]+$/, 'is invalid']
     },
     email: {
         type: String,
         lowercase: true, 
-        unique: true,
-        required: [true, "can't be blank"], 
-        match: [/\S+@\S+\.\S+/, 'is invalid']
+        // unique: true
+        // required: [true, "can't be blank"] 
+        // match: [/\S+@\S+\.\S+/, 'is invalid']
     },
-    password: String,
+    image: {
+       type: String,
+       default:"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+    },
+
+    country: String
 });
-//Get password and hash it
-userSchema.methods.encryptPassword = (password) => {
-    return bcrypt.hashSync(password, bcrypt.genSaltSync(5), null)
-};
-//Check if password matches hashed password
-userSchema.methods.validPassword = (password) => {
-    return bcrypt.compareSync(password, this.password)
-};
-module.exports = mongoose.model('User', userSchema);
+
+
+
+
+userSchema.plugin(passportLocalMongoose)
+
