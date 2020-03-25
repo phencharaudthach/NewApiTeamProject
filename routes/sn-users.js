@@ -8,6 +8,7 @@ router.post('/', function(req, res) {
     username: req.body.username,
     email: req.body.email,
     name: req.body.name,
+    password: req.body.password,
     image: req.body.image,
     country: req.body.country
     }); 
@@ -64,7 +65,7 @@ router.get("/logout", function(req, res){
 
 //Get All User
 router.get("/", async (req, res) => {
-  // console.log("Hello World");
+  // console.log("H1ello World");
   try {
     const users = await User.find();
     res.json(users);
@@ -96,26 +97,55 @@ router.get("/", async (req, res) => {
 
 
 
-  //  Update Name
-  router.put("/:name", async (req, res) => {
-    const updatedUser = await User.findOneAndUpdate(req.params.name,{
-        username: req.body.username,
-        email: req.body.email,
-        name: req.body.name,
-        image: req.body.image,
-        country: req.body.country
-        }, { new: true });
+  // //  Update Name
+  // router.put("/:name", async (req, res) => {
+  //   const updatedUser = await User.findOneAndUpdate(req.params.name,{
+  //       username: req.body.username,
+  //       email: req.body.email,
+  //       name: req.body.name,
+  //       image: req.body.image,
+  //       country: req.body.country
+  //       }, { new: true });
 
-        if(!updatedUser) return res.status(404).send("Can Not Update User With that ID");
-        res.json(updatedUser);
-      });
+  //       if(!updatedUser) return res.status(404).send("Can Not Update User With that ID");
+  //       res.json(updatedUser);
+  //     });
+
+      // Updating One
+router.patch('/:name', getUser, async (req, res) => {
+  if (req.body.name != null && req.body.name != "") {
+      res.user.name = req.body.name;
+  }
+  if ( req.body.username != null && req.body.name != ""){
+      res.user.username = req.body.username;
+  }
+  if (req.body.email != null && req.body.email != "") {
+    res.user.email = req.body.email;
+}
+if ( req.body.password != null && req.body.password != ""){
+    res.user.password = req.body.password;
+}
+if (req.body.image != null && req.body.image != "") {
+  res.user.image = req.body.image;
+}
+if (req.body.country != null && req.body.country != "") {
+  res.user.country = req.body.country;
+}
+  try {
+      const updatedUser = await res.user.save();
+      res.json(updatedUser);
+  } catch (error) {
+      res.status(400).json({message: err.message})
+  }
+});
     
      //Delete
-  router.delete("/:username", async (req, res) => {
-    const user = await User.findOneAndRemove(req.params.username);
+  router.delete("/:id", async (req, res) => {
+    const user = await User.findOneAndRemove(req.params.id);
     if(!user) return res.status(404).send(`Deleted User's Profile`)
   res.json(user)
  });
+<<<<<<< HEAD
  
   //get one by Name function
   async function getUserByName(req, res, next) {
@@ -150,4 +180,23 @@ router.get("/", async (req, res) => {
 //   }
 
 
+=======
+
+ // getUser function
+  
+ async function getUser (req, res, next) {
+  try {
+      user = await User.findOne(req.params.name)
+      if (user == null) {
+          return res.status(404).json({message: 'Cannot find user'})
+      }
+  } catch (err) { 
+      return res.status(500).json({message: err.message})
+  }
+
+  res.user = user; 
+  next();
+}
+
+>>>>>>> c517aaf75a52867344bc217671689271f4e48e3d
   module.exports = router;

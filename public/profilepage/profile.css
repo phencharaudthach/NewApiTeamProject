@@ -142,13 +142,21 @@ img {
     
 }
 
-#changeName, #changeEmail,
-#uploadPhoto, #changePw, 
-#country, #searchBtn, #listButton{
+#searchBtn, #listButton{
     display: inline-block;
     float: left;
     font-size: 20px;
     align-items: center;
+    cursor: pointer;
+    transition: background .3s ease-in-out;
+    box-shadow: 0px 5px 7px 0px rgba(0,0,0,.3);;
+}
+
+#update-Btn{
+    display: block;
+    margin: auto;
+    margin-top: 150px;
+    font-size: 20px;
     cursor: pointer;
     transition: background .3s ease-in-out;
     box-shadow: 0px 5px 7px 0px rgba(0,0,0,.3);;

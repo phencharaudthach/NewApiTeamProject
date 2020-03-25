@@ -2,9 +2,13 @@ GET http://localhost:3000/sn-users/
 
 ###
 <<<<<<< HEAD
+<<<<<<< HEAD
 Get http://localhost:3000/dj_news/searchTerm
 =======
 GET http://localhost:3000/sn-users/poodworold
+=======
+GET http://localhost:3000/sn-users/5e76d84c5369f90eec4d6fd4
+>>>>>>> master
 
 
 ###
@@ -15,9 +19,39 @@ POST http://localhost:3000/sn-users/
 Content-Type: application/json
 
 {
-    "username": "Nick1",
-    "email": "Nick2@gmail.com",
+    "name": "Peter Smith",
+    "username": "Peter1",
+    "email": "Peter@gmail.com",
     "password": "passwordtest",
+    "country": "US"
 }
 
+###
+
+PUT http://localhost:3000/sn-users/John+Smith
+Content-Type: application/json
+
+{
+    "name": "Nick Smith",
+    "username": "Nick1",
+    "email": "Nick1@gmail.com",
+    "password": "passwordtest",
+    "country": "US"
+}
+
+<<<<<<< HEAD
+>>>>>>> master
+=======
+###
+
+PATCH http://localhost:3000/sn-users/John+Work
+Content-Type: application/json
+
+{
+    "country": "US"
+}
+
+###
+
+DELETE http://localhost:3000/sn-users/5e76c41fd8398a0928de9942
 >>>>>>> master
