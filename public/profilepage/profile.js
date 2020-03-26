@@ -19,7 +19,6 @@ function tabs(evt, tabName) {
   evt.currentTarget.className += " active";
 }
 
-document.getElementById("listButton").addEventListener("click", getData);
 
 function getData() {
     //Step 1: initialize a New XHR object
@@ -62,3 +61,44 @@ function getData() {
     // Step: 4
     xhrObj.send();
 }
+
+//READ One
+function getOneByUsername() {
+  event.preventDefault();
+  var queryString = decodeURIComponent(window.location.search);
+  queryString = queryString.substring(1);
+  var input = queryString.slice(6);
+  var newUser = "";
+
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", "http://localhost:3000/sn-users/" + input, true);
+
+  xhr.onload = function() {
+    var user = JSON.parse(xhr.responseText);
+    // var user = JSON.stringify(xhr.responseText);
+    userName= user.name;
+    userImage = user.image;
+
+    if (xhr.readyState == 4 && xhr.status == "200") {
+      console.log(user);
+      document.getElementById("testName").innerHTML = userName;
+      document.getElementById("userImage").innerHTML = userImage;
+    } else {
+      document.getElementById("testName").innerHTML = "<i>user not found</i>";
+      console.error(user);
+    }
+  };
+
+  xhr.send(null);
+}
+
+function startClock(){
+    getOneByUsername();
+}
+if(window.addEventListener) {
+    window.addEventListener('load',startClock,false); //W3C
+} else {
+    window.attachEvent('onload',startClock); //IE
+}
+
+document.getElementById("listButton").addEventListener("click", getData);

@@ -31,19 +31,13 @@ const sendHttpRequest = (method, url, data) => {
 
 var getName = document.getElementById("testName").value;
 
-// const getUserData = () => {
-//     sendHttpRequest('GET', 'http://localhost:3000/sn-users/'+getName).then(responseData => {
-//         // var parsedData = JSON.parse(responseData);
-//         // console.log(responseData);
-                    
-//                     console.log(responseData.name);
-//                     // document.getElementById('testName').innerHTML = responseData[0].username;
-//     });
-// };
-
 const updateData = () => {
     
+<<<<<<< HEAD
     sendHttpRequest('PATCH', 'http://localhost:3000/sn-users/'+'Nick+Smith', {
+=======
+    sendHttpRequest('PATCH', 'http://localhost:3000/sn-users/'+getName, true, {
+>>>>>>> profile_page_v1.0
         
         name: document.getElementById("changingName").value,
         username: document.getElementById("changingUsername").value,
@@ -53,7 +47,11 @@ const updateData = () => {
 
     }).then(responseData => {
         console.log(responseData);
+<<<<<<< HEAD
         // console.log(getName);
+=======
+        console.log(getName.name);
+>>>>>>> profile_page_v1.0
     })
     .catch(err => {
         console.log(err);
