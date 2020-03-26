@@ -67,7 +67,13 @@ function getOneByUsername() {
   event.preventDefault();
   var queryString = decodeURIComponent(window.location.search);
   queryString = queryString.substring(1);
-  const input = 'sallyswings';
+  var input = queryString.slice(6);
+  var newUser = "";
+// for (var i = 0; i < input.length; i++)
+// {
+//  newUser = input[i];
+
+// }
   var xhr = new XMLHttpRequest();
   xhr.open("GET", "http://localhost:3000/sn-users/" + input, true);
 
@@ -78,7 +84,7 @@ function getOneByUsername() {
       console.log(user);
       document.getElementById("testName").innerHTML = input;
     } else {
-      document.getElementById("textName").innerHTML = "<i>user not found</i>";
+      document.getElementById("testName").innerHTML = "<i>user not found</i>";
       console.error(user);
     }
   };
