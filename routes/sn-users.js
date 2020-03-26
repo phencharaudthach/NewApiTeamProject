@@ -20,23 +20,36 @@ router.post('/', function(req, res) {
 			} 
 		}); 
 }); 
-// //Create new User
-// router.post('/', async (req, res) => {
-// // const {  name, email, password } = req.body;
-//     const user = new User({
-//       name: req.body.name,
-//       email: req.body.email,
-//       password: req.body.password
-//     });
 
-//     try{
-//       console.log("Hello World");
-//         const newUser = await user.save();
-//         res.status(201).json(newUser);
-//     }catch (err) {
-//         res.status(400).json({ message: err.message });
-//     }
-// });
+
+// Creating One
+router.post('/login', passport.authenticate('local'), (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
+      User.findOne({username, password }, function(err, user) {
+          if(err) {
+            console.log(err);
+            return res.status(500).send();
+          }
+          if (!user){
+            console.log("User not found!");
+            return res.status(404).send();
+    }
+      console.log('Loggined In Successfully!');
+      res.status(201).send({message:"successfully logged in"});
+      
+})
+ });
+
+router.get("/logout", function(req, res){    
+  req.session.destroy()
+  req.logout();    
+  res.clearCookie('session-id');
+  res.json({
+    message: 'You are successfully logged out!'
+  });
+  res.redirect("/");
+});
 
 //Get All User
 router.get("/", async (req, res) => {
@@ -52,11 +65,14 @@ router.get("/", async (req, res) => {
 //  Get One User
 // //Read User By userName
 
-router.get("/:id", async (req, res) => {
+//  Get One User
+//Read User By userName
+
+router.get("/:username", async (req, res) => {
   let user
-  let userID = req.params.id;
+  let username = req.params.username;
   try {
-    user = await User.findById(userID);
+    user = await User.findOne({ username });
     if (user == null) {
       return res.status(404).json({ message: "Cannot Find User's username" });
     }
@@ -85,7 +101,8 @@ router.get("/:id", async (req, res) => {
 
      //Delete
   router.delete("/:username", async (req, res) => {
-    const user = await User.findOneAndRemove(req.params.username);
+    const username = req.params.username;
+    const user = await User.findOneAndRemove({username});
     if(!user) return res.status(404).send(`Deleted User's Profile`)
   res.json(user)
  });

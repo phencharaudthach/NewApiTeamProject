@@ -26,29 +26,29 @@
     </nav>
     <section>
         <div class="layout">
-            <form>
+            <form action="../profilepage/profile.html">
                 <h2>Please login</h2>
-                <input id="emailOrNumber"type="text" placeholder=" Email">
+                <input id="usernameLogin" type="text" placeholder="username">
             <div class= "passwordField">
-                    <input id="emailLogin" type="password" placeholder="Password">
+                    <input id="passwordLogin" type="password" placeholder="Password">
             </div>
             <button id="logIn" class="buttonStyle"type="submit">Log in</button>
             <button id="newAccount" class="buttonStyle" type="submit">Create New Account</button>
             </form>
       
             <div class="containerColor">
-                <form id="criticalInfo" onsubmit="return validateForm()">
+                <form id="criticalInfo" >
                     <h2> Don't have an account? Sign up!!</h2>
                     <div class="nameInfo">
                         <small>Error message</small>
                         <label class="nameLabel">* Name: 
-                        <input id="fullName"type="text" name="Name" placeholder="Enter your First Name">
+                        <input id="fullName"type="text" name="Name" placeholder="Enter Name">
                         </label>
                     </div>
                     <div class="nameInfo">
                         <small>Error message</small>
                         <label class="nameLabel">* Username: 
-                        <input id="uniqueName" type="text" name="Name" placeholder="Enter your Last Name">
+                        <input id="uniqueName" type="text" name="Name" placeholder="Create a username">
                         </label>
                     </div>
                     <div class="nameInfo">
@@ -63,7 +63,7 @@
                         <input id="userPassword" type="password" name="Name" placeholder="Create Password">
                         </label>
                     </div>
-                <button onclick="checkInputs()" id="signUp" type="submit">Sign Up!</button>
+                <button id="signUp" type="submit">Sign Up!</button>
                 </form>
             </div>
         </div>
@@ -104,8 +104,9 @@
     </footer>
 
 </body>
-<script src="nav.js"></script>
-<script src="login.js"></script>
-<script src="geolocation.js"></script>
+<!-- <script src="nav.js"></script> -->
+<!-- <script src="login.js"></script> -->
+<script src="register.js"></script>
+<!-- <script src="geolocation.js"></script> -->
 
 </html>

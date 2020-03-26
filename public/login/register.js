@@ -46,9 +46,11 @@ const registerData = () => {
     })
     .catch(err => {
         console.log(err);
-        alert('Something went wrong, try again');
+      
     })
 };
+
+
 
 function loginData() {
     event.preventDefault();
@@ -56,7 +58,7 @@ function loginData() {
       username: document.getElementById("usernameLogin").value,
       password: document.getElementById("passwordLogin").value,
     };
-  
+    var username = document.getElementById("usernameLogin").value;
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "http://localhost:3000/sn-users/login");
     xhr.setRequestHeader("Content-Type", "application/json");
@@ -66,7 +68,8 @@ function loginData() {
             alert("Incorrect login, try again!")
         } else {
          console.log("works")
-         window.location.href = "http://localhost:3000/profilepage/profile.html";
+         var queryString = "?para1="+ username; 
+         window.location.href = "http://localhost:3000/profilepage/profile.html"+queryString;
         }
     };
 
