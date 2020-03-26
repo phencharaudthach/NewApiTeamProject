@@ -69,20 +69,20 @@ function getOneByUsername() {
   queryString = queryString.substring(1);
   var input = queryString.slice(6);
   var newUser = "";
-// for (var i = 0; i < input.length; i++)
-// {
-//  newUser = input[i];
 
-// }
   var xhr = new XMLHttpRequest();
   xhr.open("GET", "http://localhost:3000/sn-users/" + input, true);
 
   xhr.onload = function() {
     var user = JSON.parse(xhr.responseText);
     // var user = JSON.stringify(xhr.responseText);
+    userName= user.name;
+    userImage = user.image;
+
     if (xhr.readyState == 4 && xhr.status == "200") {
       console.log(user);
-      document.getElementById("testName").innerHTML = input;
+      document.getElementById("testName").innerHTML = userName;
+      document.getElementById("userImage").innerHTML = userImage;
     } else {
       document.getElementById("testName").innerHTML = "<i>user not found</i>";
       console.error(user);
