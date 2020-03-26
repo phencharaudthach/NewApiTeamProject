@@ -90,7 +90,7 @@ router.get("/:id", async (req, res) => {
   res.json(user)
  });
   
-  router.patch('/:id', getUser, async (req, res) => {
+  router.patch('/:username', getUser, async (req, res) => {
     if (req.body.name != null && req.body.name != " ") {
         res.user.name = req.body.name;
     }
@@ -115,8 +115,9 @@ router.get("/:id", async (req, res) => {
 });
 
 async function getUser (req, res, next) {
+  const username = req.params.username;
     try {
-        user = await User.findById(req.params.id)
+        user = await User.findOne({username})
         if (user == null) {
             return res.status(404).json({message: 'Cannot find user'})
         }

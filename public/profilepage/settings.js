@@ -41,9 +41,10 @@ var getName = document.getElementById("testName").value;
 //     });
 // };
 
+
 const updateData = () => {
     
-    sendHttpRequest('PATCH', 'http://localhost:3000/sn-users/', {
+    sendHttpRequest('PATCH', 'http://localhost:3000/sn-users/'+getName, true, {
         
         name: document.getElementById("changingName").value,
         username: document.getElementById("changingUsername").value,
