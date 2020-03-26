@@ -33,3 +33,13 @@ Content-Type: application/json
 ###
 
 DELETE http://localhost:3000/sn-users/jane1
+
+###
+
+
+PATCH http://localhost:3000/sn-users/sallyswings
+Content-Type: application/json
+
+{
+    "country": "EU"
+}

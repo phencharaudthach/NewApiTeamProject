@@ -31,17 +31,6 @@ const sendHttpRequest = (method, url, data) => {
 
 var getName = document.getElementById("testName").value;
 
-// const getUserData = () => {
-//     sendHttpRequest('GET', 'http://localhost:3000/sn-users/'+getName).then(responseData => {
-//         // var parsedData = JSON.parse(responseData);
-//         // console.log(responseData);
-                    
-//                     console.log(responseData.name);
-//                     // document.getElementById('testName').innerHTML = responseData[0].username;
-//     });
-// };
-
-
 const updateData = () => {
     
     sendHttpRequest('PATCH', 'http://localhost:3000/sn-users/'+getName, true, {
@@ -54,7 +43,7 @@ const updateData = () => {
 
     }).then(responseData => {
         console.log(responseData);
-        console.log(getName);
+        console.log(getName.name);
     })
     .catch(err => {
         console.log(err);
