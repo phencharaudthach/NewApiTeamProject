@@ -26,10 +26,10 @@
     </nav>
     <section>
         <div class="layout">
-            <form>
+            <form action="/login" method="POST">
                 <h2>Please login</h2>
-                <input id="emailOrNumber"type="text" placeholder=" Email">
-            <div class= "passwordField">
+                <input id="emailOrNumber" name="email" type="email" placeholder="Username">
+                    <div class= "passwordField">
                     <input id="emailLogin" type="password" placeholder="Password">
             </div>
             <button id="logIn" class="buttonStyle"type="submit">Log in</button>
@@ -37,18 +37,18 @@
             </form>
       
             <div class="containerColor">
-                <form id="criticalInfo" onsubmit="return validateForm()">
+                <form id="criticalInfo" form=action="/register" method="POST">
                     <h2> Don't have an account? Sign up!!</h2>
                     <div class="nameInfo">
                         <small>Error message</small>
-                        <label class="nameLabel">* Name: 
+                        <label class="nameLabel">* Name 
                         <input id="fullName"type="text" name="Name" placeholder="Enter your First Name">
                         </label>
                     </div>
                     <div class="nameInfo">
                         <small>Error message</small>
-                        <label class="nameLabel">* Username: 
-                        <input id="uniqueName" type="text" name="Name" placeholder="Enter your Last Name">
+                        <label class="nameLabel">* Username 
+                        <input id="uniqueName" type="text" name="Name" placeholder="Enter a Username">
                         </label>
                     </div>
                     <div class="nameInfo">
@@ -60,7 +60,7 @@
                     <div class="nameInfo">
                         <small>Error message</small>
                         <label class="nameLabel">* Password 
-                        <input id="userPassword" type="password" name="Name" placeholder="Create Password">
+                        <input id="userPassword" type="password" name="Name" placeholder="Create a Password">
                         </label>
                     </div>
                 <button onclick="checkInputs()" id="signUp" type="submit">Sign Up!</button>
@@ -69,35 +69,35 @@
         </div>
     </section>
     <footer>
-    <div class="footerLayout">
-        <div class="helpfulInfo">
-            <h3>About Us</h3>
-            <p>Small Corporation seeking to add value to the lives of our users</p>
+        <div class="footerLayout">
+            <div class="helpfulInfo">
+                <h3>About Us</h3>
+                <p>Small Corporation seeking to add value to the lives of our users</p>
+            </div>
+            <div class="helpfulInfo">
+                <h3>Information</h3>
+                <ul>
+                    <li>Search</li>
+                    <li>Blog</li>
+                    <li>Events<li>
+                </ul>
+            </div>
+            <div class="helpfulInfo">
+                <h3>Helpful Links</h3>
+                <ul>
+                    <li>Support</li>
+                    <li>Terms and Conditions</li>
+                    <li>Private Policy<li>
+                </ul>
+            </div>
+            <div class="helpfulInfo">
+                <label>Subsribe to our News Letter
+                <input id="subscriberEmail" type="email" name="Name" placeholder="Subscribe">
+                </label>
+                <button type="submit">Subscribe</button>
+            </div>
         </div>
-        <div class="helpfulInfo">
-            <h3>Information</h3>
-            <ul>
-                <li>Search</li>
-                <li>Blog</li>
-                <li>Events<li>
-            </ul>
-        </div>
-        <div class="helpfulInfo">
-            <h3>Helpful Links</h3>
-            <ul>
-                <li>Support</li>
-                <li>Terms and Conditions</li>
-                <li>Private Policy<li>
-            </ul>
-        </div>
-        <div class="helpfulInfo">
-            <label>Subsribe to our News Letter
-            <input id="subscriberEmail" type="email" name="Name" placeholder="Subscribe">
-            </label>
-            <button type="submit">Subscribe</button>
-        </div>
-    </div>
-    <div class="socialIcons">
+        <div class="socialIcons">
         <p>Social Media buttons</p>
 
     </div>
