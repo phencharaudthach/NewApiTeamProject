@@ -81,17 +81,8 @@ function getData() {
           var parsedData = JSON.parse(xhrObj.responseText); 
           console.log(parsedData);
 
-          let list = '';
-          for (var i=0;i < parsedData.articles.length; i++){
-              list += "<br> <h4>"+[i+1]+"</h4>" + 
-              '<div id="borderline"> <br><p><img src="' +parsedData.articles[i].urlToImage+'"></p>'+
-              '<p><a href="' +parsedData.articles[i].url+'">Click To Read Article</a></p>'+
-              '<label> Article Name: </label>' +parsedData.articles[i].source.name+ 
-              '<label> Author: </label> '+parsedData.articles[i].author+'</p>'+
-              '<label>Title: </label>' +parsedData.articles[i].title+'</p>'+
-              '<label>Description: </label>' +parsedData.articles[i].description+'</p>'+
-              '<label>Published At: </label>' +parsedData.articles[i].publishedAt+'</p>'+
-              '<label>Content: </label>' +parsedData.articles[i].content+'</p> </div>';
+          let userName = '';
+          
           }
           console.log(list);
           document.getElementById('text').innerHTML = list;
