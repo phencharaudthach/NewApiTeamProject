@@ -4,8 +4,9 @@
   box-sizing: border-box;
 }
 
-body{
+html, body{
   background-color: #F8F8F8;
+  height: 100%;
 }
 
 nav {
@@ -197,6 +198,7 @@ footer button {
   background-color: orange;
   padding: 10px;
   border-radius: 5px;
+  margin-top: 7px;
 }
 
 .socialIcons {
@@ -222,10 +224,10 @@ footer button {
     
   }
   .navLinks {
-  position: absolute;
+  position: fixed;
   height: 92vh;
-  right: 0px;
   top: 8vh;
+  right: 0px;
   display: flex;
   flex-direction: column;
   align-items: center;
