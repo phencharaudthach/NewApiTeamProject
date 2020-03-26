@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const passport = require('passport')
 const User = require('../models/user');
-
+  
 router.post('/', function(req, res) { 
   Users=new User({
     username: req.body.username,
@@ -22,18 +22,25 @@ router.post('/', function(req, res) {
 		}); 
 }); 
 
+
+// Creating One
 router.post('/login', passport.authenticate('local'), (req, res) => {
-  User.findOne({
-    username: req.body.username
-  }, (err, person) => {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'application/json');
-    res.json({
-      success: true,
-      status: 'You are successfully logged in!'
-    });
-  })
-});
+  const username = req.body.username;
+  const password = req.body.password;
+      User.findOne({username, password }, function(err, user) {
+          if(err) {
+            console.log(err);
+            return res.status(500).send();
+          }
+          if (!user){
+            console.log("User not found!");
+            return res.status(404).send();
+    }
+      console.log('Loggined In Successfully!');
+      res.status(201).send({message:"successfully logged in"});
+      
+})
+ });
 
 router.get("/logout", function(req, res){    
   req.session.destroy()
@@ -79,21 +86,21 @@ router.get("/", async (req, res) => {
 //may need to move the logout route???
 
 //  Get One User
-// //Read User By userName
+//Read User By userName
 
-// router.get("/:username", async (req, res) => {
-//   let user
-//   let username = req.params.username;
-//   try {
-//     user = await User.findOne({ username });
-//     if (user == null) {
-//       return res.status(404).json({ message: "Cannot Find User's username" });
-//     }
-//   }catch (err) {
-//     res.status(400).json({ message: err.message });
-//   }
-//     res.json(user);
-//   });
+router.get("/:username", async (req, res) => {
+  let user
+  let username = req.params.username;
+  try {
+    user = await User.findOne({ username });
+    if (user == null) {
+      return res.status(404).json({ message: "Cannot Find User's username" });
+    }
+  }catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+    res.json(user);
+  });
 
 
   //  Update Name

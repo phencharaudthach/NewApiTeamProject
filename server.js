@@ -3,12 +3,13 @@ const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
 const app = express();
 const session = require('express-session');
+const cors = require('cors');
 const User = require('./models/user');
 require('dotenv/config');
 require('./config/passport.js')
 
 //MiddleWare
-
+app.use(cors());
 // app.use(bodyParser.urlencoded({ extended: true }));
 
 //middleware to initialize passport for authentication
@@ -32,7 +33,7 @@ const indexRouter = require('./routes/index')
  app.use(express.json());
  app.use("/sn-users", userRouter);
  app.use("/dj_news", newsSearchRouter);
-app.use(express.static('./public'))
+app.use(express.static('./public'));
 
 //Connect to Database
 const mongoose = require('mongoose');
