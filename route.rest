@@ -1,7 +1,14 @@
 GET http://localhost:3000/sn-users/
 
 ###
+<<<<<<< HEAD
+<<<<<<< HEAD
+Get http://localhost:3000/dj_news/searchTerm
+=======
+GET http://localhost:3000/sn-users/poodworold
+=======
 GET http://localhost:3000/sn-users/5e76d84c5369f90eec4d6fd4
+>>>>>>> master
 
 
 ###
@@ -32,6 +39,9 @@ Content-Type: application/json
     "country": "US"
 }
 
+<<<<<<< HEAD
+>>>>>>> master
+=======
 ###
 
 PATCH http://localhost:3000/sn-users/John+Work
@@ -44,3 +54,4 @@ Content-Type: application/json
 ###
 
 DELETE http://localhost:3000/sn-users/5e76c41fd8398a0928de9942
+>>>>>>> master
