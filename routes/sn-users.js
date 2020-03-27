@@ -8,6 +8,7 @@ router.post('/', function(req, res) {
     username: req.body.username,
     email: req.body.email,
     name: req.body.name,
+    password: req.body.password,
     image: req.body.image,
     country: req.body.country
     }); 
@@ -21,7 +22,6 @@ router.post('/', function(req, res) {
 		}); 
 }); 
 
-<<<<<<< HEAD
 router.post('/login', passport.authenticate('local'), (req, res) => {
   User.findOne({
     username: req.body.username
@@ -34,27 +34,6 @@ router.post('/login', passport.authenticate('local'), (req, res) => {
     });
   })
 });
-=======
-
-// Creating One
-router.post('/login', passport.authenticate('local'), (req, res) => {
-  const username = req.body.username;
-  const password = req.body.password;
-      User.findOne({username, password }, function(err, user) {
-          if(err) {
-            console.log(err);
-            return res.status(500).send();
-          }
-          if (!user){
-            console.log("User not found!");
-            return res.status(404).send();
-    }
-      console.log('Loggined In Successfully!');
-      res.status(201).send({message:"successfully logged in"});
-      
-})
- });
->>>>>>> profile_page_v1.0
 
 router.get("/logout", function(req, res){    
   req.session.destroy()
@@ -65,7 +44,6 @@ router.get("/logout", function(req, res){
   });
   res.redirect("/");
 });
-<<<<<<< HEAD
 
 // //Create new User
 // router.post('/', async (req, res) => {
@@ -84,8 +62,6 @@ router.get("/logout", function(req, res){
 //         res.status(400).json({ message: err.message });
 //     }
 // });
-=======
->>>>>>> profile_page_v1.0
 
 //Get All User
 router.get("/", async (req, res) => {
@@ -105,7 +81,6 @@ router.get("/", async (req, res) => {
 //  Get One User
 // //Read User By userName
 
-<<<<<<< HEAD
 // router.get("/:username", async (req, res) => {
 //   let user
 //   let username = req.params.username;
@@ -119,50 +94,54 @@ router.get("/", async (req, res) => {
 //   }
 //     res.json(user);
 //   });
-=======
-//  Get One User
-//Read User By userName
 
-router.get("/:username", async (req, res) => {
-  let user
-  let username = req.params.username;
-  try {
-    user = await User.findOne({ username });
-    if (user == null) {
-      return res.status(404).json({ message: "Cannot Find User's username" });
-    }
-  }catch (err) {
-    res.status(400).json({ message: err.message });
+
+
+  // //  Update Name
+  // router.put("/:name", async (req, res) => {
+  //   const updatedUser = await User.findOneAndUpdate(req.params.name,{
+  //       username: req.body.username,
+  //       email: req.body.email,
+  //       name: req.body.name,
+  //       image: req.body.image,
+  //       country: req.body.country
+  //       }, { new: true });
+
+  //       if(!updatedUser) return res.status(404).send("Can Not Update User With that ID");
+  //       res.json(updatedUser);
+  //     });
+
+      // Updating One
+router.patch('/:name', getUser, async (req, res) => {
+  if (req.body.name != null && req.body.name != "") {
+      res.user.name = req.body.name;
   }
-    res.json(user);
-  });
-
->>>>>>> profile_page_v1.0
-
-
-  //  Update Name
-  router.put("/:name", async (req, res) => {
-    const updatedUser = await User.findOneAndUpdate(req.params.name,{
-        username: req.body.username,
-        email: req.body.email,
-        name: req.body.name,
-        image: req.body.image,
-        country: req.body.country
-        }, { new: true });
-
-        if(!updatedUser) return res.status(404).send("Can Not Update User With that ID");
-        res.json(updatedUser);
-      });
-<<<<<<< HEAD
-
-=======
->>>>>>> profile_page_v1.0
+  if ( req.body.username != null && req.body.name != ""){
+      res.user.username = req.body.username;
+  }
+  if (req.body.email != null && req.body.email != "") {
+    res.user.email = req.body.email;
+}
+if ( req.body.password != null && req.body.password != ""){
+    res.user.password = req.body.password;
+}
+if (req.body.image != null && req.body.image != "") {
+  res.user.image = req.body.image;
+}
+if (req.body.country != null && req.body.country != "") {
+  res.user.country = req.body.country;
+}
+  try {
+      const updatedUser = await res.user.save();
+      res.json(updatedUser);
+  } catch (error) {
+      res.status(400).json({message: err.message})
+  }
+});
     
-
      //Delete
-  router.delete("/:username", async (req, res) => {
-<<<<<<< HEAD
-    const user = await User.findOneAndRemove(req.params.username);
+  router.delete("/:id", async (req, res) => {
+    const user = await User.findOneAndRemove(req.params.id);
     if(!user) return res.status(404).send(`Deleted User's Profile`)
   res.json(user)
  });
@@ -203,52 +182,21 @@ router.get("/:username", async (req, res) => {
 
 =======
 
+ // getUser function
+  
+ async function getUser (req, res, next) {
+  try {
+      user = await User.findOne(req.params.name)
+      if (user == null) {
+          return res.status(404).json({message: 'Cannot find user'})
+      }
+  } catch (err) { 
+      return res.status(500).json({message: err.message})
+  }
+
+  res.user = user; 
+  next();
+}
 
 >>>>>>> c517aaf75a52867344bc217671689271f4e48e3d
-=======
-    const username = req.params.username;
-    const user = await User.findOneAndRemove({username});
-    if(!user) return res.status(404).send(`Deleted User's Profile`)
-  res.json(user)
- });
-  
-  router.patch('/:username', getUser, async (req, res) => {
-    if (req.body.name != null && req.body.name != " ") {
-        res.user.name = req.body.name;
-    }
-    if ( req.body.username != null && req.body.username != " "){
-        res.user.username = req.body.username;
-    }
-    if (req.body.email != null && req.body.email != " ") {
-        res.user.email = req.body.email;
-    }
-    if ( req.body.image != null && req.body.image != " "){
-        res.user.image = req.body.image;
-    }
-    if ( req.body.country != null && req.body.country != " "){
-        res.user.country = req.body.country;
-    }
-    try {
-        const updatedUser = await res.user.save();
-        res.json(updatedUser);
-    } catch (error) {
-        res.status(400).json({message: err.message})
-    }
-});
-
-async function getUser (req, res, next) {
-  const username = req.params.username;
-    try {
-        user = await User.findOne({username})
-        if (user == null) {
-            return res.status(404).json({message: 'Cannot find user'})
-        }
-    } catch (err) { 
-        return res.status(500).json({message: err.message})
-    }
-
-    res.user = user; 
-    next();
-}
->>>>>>> profile_page_v1.0
   module.exports = router;
