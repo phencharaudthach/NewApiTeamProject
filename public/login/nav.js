@@ -5,7 +5,6 @@ const navSlide = () => {
 
     menu.addEventListener('click', () => {
         nav.classList.toggle('nav-active');
-
    
 
     navLinks.forEach((link, index) => {
