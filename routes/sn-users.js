@@ -145,42 +145,6 @@ if (req.body.country != null && req.body.country != "") {
     if(!user) return res.status(404).send(`Deleted User's Profile`)
   res.json(user)
  });
-<<<<<<< HEAD
- 
-  //get one by Name function
-  async function getUserByName(req, res, next) {
-    let user;
-    const name = req.params.name;
-    try {
-      user = await User.findOne({ name });
-      if (user == null) {
-        return res.status(404).json({ message: "Cannot Find User's Name" });
-      }
-    } catch (err) {
-      return res.status(500).json({ message: err.message });
-    }
-    res.user = user;
-    next();
-  }
-
-//   //get one by Name function
-//   async function getUserByName(req, res, next) {
-//     let user;
-//     let name = req.params.name;
-//     try {
-//       user = await User.findOne({ name });
-//       if (user == null) {
-//         return res.status(404).json({ message: "Cannot Find User's Name" });
-//       }
-//     } catch (err) {
-//       return res.status(500).json({ message: err.message });
-//     }
-//     res.user = user;
-//     next();
-//   }
-
-
-=======
 
  // getUser function
   
@@ -198,5 +162,4 @@ if (req.body.country != null && req.body.country != "") {
   next();
 }
 
->>>>>>> c517aaf75a52867344bc217671689271f4e48e3d
   module.exports = router;
