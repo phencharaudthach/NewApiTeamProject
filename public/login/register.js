@@ -17,13 +17,13 @@ const sendHttpRequest = (method, url, data) => {
                 reject(xhr.response);
             } else {
             resolve(xhr.response);
+            
             }
         };
-
         xhr.onerror = () => {
             reject('Something went wrong');
+            alert("Something went wrong");
         };
-
         xhr.send(JSON.stringify(data));
     });
     return promise;
@@ -42,7 +42,6 @@ const registerData = () => {
 
     }).then(responseData => {
         console.log(responseData);
-
     })
     .catch(err => {
         console.log(err);
@@ -68,7 +67,7 @@ function loginData() {
             alert("Incorrect login, try again!")
         } else {
          console.log("works")
-         var queryString = "?para1="+ username; 
+         var queryString = "?="+ username; 
          window.location.href = "http://localhost:3000/profilepage/profile.html"+queryString;
         }
     };

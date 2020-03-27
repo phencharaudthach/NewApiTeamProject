@@ -67,9 +67,8 @@ function getOneByUsername() {
   event.preventDefault();
   var queryString = decodeURIComponent(window.location.search);
   queryString = queryString.substring(1);
-  var input = queryString.slice(6);
-  var newUser = "";
-
+  var input = queryString.slice(1);
+  
   var xhr = new XMLHttpRequest();
   xhr.open("GET", "http://localhost:3000/sn-users/" + input, true);
 
@@ -82,7 +81,8 @@ function getOneByUsername() {
     if (xhr.readyState == 4 && xhr.status == "200") {
       console.log(user);
       document.getElementById("testName").innerHTML = userName;
-      document.getElementById("userImage").innerHTML = userImage;
+      document.getElementById("userImage").src = userImage;
+      console.log(user.image)
     } else {
       document.getElementById("testName").innerHTML = "<i>user not found</i>";
       console.error(user);

@@ -12,34 +12,18 @@ POST http://localhost:3000/sn-users/
 Content-Type: application/json
 
 {
-    "name": "John Code",
-    "username": "John1",
-    "email": "JohnCodes@gmail.com",
-    "password": "coding@test",
-    "country": "AZ"
+    "name": "John Code"
 }
 
 ###
 
-PATCH http://localhost:3000/sn-users/
+PATCH http://localhost:3000/sn-users/shannon1
 Content-Type: application/json
 
 {
-    "name": "John Codes",
-    "email": "JohnCoding@gmail.com",
-    "country": "AZ"
+    "image": "123asd"
 }
 
 ###
 
 DELETE http://localhost:3000/sn-users/jane1
-
-###
-
-
-PATCH http://localhost:3000/sn-users/sallyswings
-Content-Type: application/json
-
-{
-    "country": "EU"
-}
