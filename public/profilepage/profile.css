@@ -135,7 +135,6 @@ nav {
   }
   
 .nav {
-    width: 100%;
     z-index: -1;
 }
 
@@ -164,6 +163,7 @@ nav {
 .profile-body {
     z-index: -1;
     padding: 20px;
+    width:fit-content;
     word-break: break-word ;
 }
 
@@ -177,18 +177,18 @@ img {
     border: 3px hidden grey;
     box-shadow: 0px 5px 7px 0px rgba(0,0,0,.3);;
     float: left;
+    
 }
 
 .profiletab {
    display: none;
+   width: inherit;
 }
 
 .tab {
     padding: 20px;
     width: 100%;
-    
     list-style-type: none;
-    
 }
 
 #searchBtn, #listButton{
