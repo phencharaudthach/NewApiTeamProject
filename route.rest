@@ -19,22 +19,24 @@ POST http://localhost:3000/sn-users/
 Content-Type: application/json
 
 {
-    "name": "John Code",
-    "username": "John1",
-    "email": "JohnCodes@gmail.com",
-    "password": "coding@test",
-    "country": "AZ"
+    "name": "Peter Smith",
+    "username": "Peter1",
+    "email": "Peter@gmail.com",
+    "password": "passwordtest",
+    "country": "US"
 }
 
 ###
 
-PATCH http://localhost:3000/sn-users/
+PUT http://localhost:3000/sn-users/John+Smith
 Content-Type: application/json
 
 {
-    "name": "John Codes",
-    "email": "JohnCoding@gmail.com",
-    "country": "AZ"
+    "name": "Nick Smith",
+    "username": "Nick1",
+    "email": "Nick1@gmail.com",
+    "password": "passwordtest",
+    "country": "US"
 }
 
 <<<<<<< HEAD
@@ -42,19 +44,14 @@ Content-Type: application/json
 =======
 ###
 
-DELETE http://localhost:3000/sn-users/jane1
+PATCH http://localhost:3000/sn-users/John+Work
+Content-Type: application/json
+
+{
+    "country": "US"
+}
 
 ###
 
-<<<<<<< HEAD
 DELETE http://localhost:3000/sn-users/5e76c41fd8398a0928de9942
 >>>>>>> master
-=======
-
-PATCH http://localhost:3000/sn-users/sallyswings
-Content-Type: application/json
-
-{
-    "country": "EU"
-}
->>>>>>> profile_page_v1.0
