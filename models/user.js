@@ -3,7 +3,9 @@ const passportLocalMongoose = require('passport-local-mongoose')
 
 //User schema
 const userSchema = new mongoose.Schema ({
-    name: String,
+    name: {
+        type: String,
+    },
     username: {
         type: String,
         lowercase: true, 
@@ -18,9 +20,15 @@ const userSchema = new mongoose.Schema ({
         // required: [true, "can't be blank"] 
         // match: [/\S+@\S+\.\S+/, 'is invalid']
     },
-    image: String,
+    image: {
+       type: String,
+       default:"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+    },
+
     country: String
 });
+
+
 
 
 userSchema.plugin(passportLocalMongoose)
