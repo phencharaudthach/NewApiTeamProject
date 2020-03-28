@@ -26,10 +26,10 @@ function updateUser() {
         var user = json;
         if (xhr.readyState == 4 && xhr.status == "200") {
             console.log(user);
-            alert("updated successfully");
+
         } else {
             console.error(user);
-            alert("Did not update successfully")
+            alert("Did not update successfully");
         }
     };
     xhr.send(json);
@@ -38,5 +38,5 @@ function reload() {
     location.reload();
   }
 
-updateBtn.addEventListener('click', ()=>{ updateUser(); reload();});
+updateBtn.addEventListener('click', ()=>{ updateUser(); alert("updated successfully"); reload()});
 

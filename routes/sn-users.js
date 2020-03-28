@@ -8,6 +8,7 @@ router.post('/', function(req, res) {
     username: req.body.username,
     email: req.body.email,
     name: req.body.name,
+    password: req.body.password,
     image: req.body.image,
     country: req.body.country
     }); 
@@ -43,13 +44,13 @@ router.post('/login', passport.authenticate('local'), (req, res) => {
  });
 
 router.get("/logout", function(req, res){    
-  req.session.destroy()
-  req.logout();    
+  req.logOut(); 
+  req.session.destroy();   
   res.clearCookie('session-id');
   res.json({
     message: 'You are successfully logged out!'
   });
-  res.redirect("/");
+  // res.redirect("/");
 });
 
 //Get All User
@@ -62,9 +63,6 @@ router.get("/", async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
-
-//  Get One User
-// //Read User By userName
 
 //  Get One User
 //Read User By userName
