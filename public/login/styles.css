@@ -4,65 +4,66 @@
   box-sizing: border-box;
 }
 
-body {
+html, body{
   background-color: #F8F8F8;
+  height: 100%;
 }
 
 nav {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    min-height: 8vh;
-    background-color: #333;
-    font-size: 16px;
-  }
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 8vh;
+  background-color: #333;
+  font-size: 16px;
+}
   
-  .topnav {
-    font-family: 'Liu Jian Mao Cao', cursive;
-    color: white;
-    font-size: 25px;
-  }
+.topnav {
+  font-family: 'Liu Jian Mao Cao', cursive;
+  color: white;
+  font-size: 25px;
+}
 
-  .navLinks {
-    display: flex;
-    justify-content: space-around;
-    width: 40%;
-  }
+.navLinks {
+  display: flex;
+  justify-content: space-around;
+  width: 40%;
+}
 
-  .navLinks li{
-    list-style: none;
-  }
+.navLinks li{
+  list-style: none;
+}
 
-  .navLinks a {
-    color: white;
-    text-decoration: none;
-    font-size: 15px;
-  }
+.navLinks a {
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+}
 
-  ul li a:hover {
-    background-color: #ddd;
-    color: black;
-  }
+ul li a:hover {
+  background-color: #ddd;
+  color: black;
+}
   
 
-  .menuBars { 
-    display: none;
-  }
+.menuBars { 
+  display: none;
+}
 
-  .menuBars div{
-    width: 25px;
-    height: 3px;
-    background-color: white;
-    margin: 5px;
-    transition: all 0.3s ease;
-  }
+.menuBars div{
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 5px;
+  transition: all 0.3s ease;
+}
 
-  #criticalInfo{
-    background-color: #333;
-    color: white;
-    font-weight: 10px;
-    padding: 12px;
-  }
+#criticalInfo{
+  background-color: #333;
+  color: white;
+  font-weight: 10px;
+  padding: 12px;
+}
 
 .layout {
   width: 100%;
@@ -70,7 +71,6 @@ nav {
   flex-direction: row;
   justify-content: center;
   margin-top: 45px;
-
 }
 
 #criticalInfo {
@@ -84,15 +84,15 @@ nav {
     width: 80%;
     margin: auto;
     margin-top: 10px;
-    }   
+}   
     
 #newAccount {
-        background-color: #04aa06;
-        width:  200px;
-        margin: auto;
-        height: 50px;
-        cursor: pointer;
-      }
+  background-color: #04aa06;
+  width:  200px;
+  margin: auto;
+  height: 50px;
+  cursor: pointer;
+}
 
 .buttonStyle {
   margin: auto;
@@ -105,24 +105,46 @@ nav {
 }
 
 #signUp {
-    background-color: #04aa06;
-    border-radius: 5px;
-    width:  200px;
-    display: block;
-    margin: auto;
-    font-weight: bold;
-    font-size: 17px;
-    color: #fff;
-    padding: 15px;
-    margin-top: 10px;
-    cursor: pointer;
-    text-align: center; 
-      }
+   background-color: #04aa06;
+  border-radius: 5px;
+  width:  200px;
+  display: block;
+  margin: auto;
+  font-weight: bold;
+  font-size: 17px;
+  color: #fff;
+  padding: 15px;
+  margin-top: 10px;
+  cursor: pointer;
+  text-align: center; 
+}
 
-h3,h2 {
+.nameInfo {
+  position: relative;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+.nameInfo small {
+  color: #e74c3c;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: none;
+}
+
+ul li a:hover {
+  background-color: #ddd;
+  color: black;
+  padding: 20px;
+}
+
+.containerColor h2 {
   text-align: center;
   margin-bottom: 10px;
+  color: orange
 }
+
 input {
   border-radius: 5px;
   padding: 15px;
@@ -133,58 +155,101 @@ input {
   margin-top: 5px;
 }
 
-ul li a:hover {
-  background-color: #ddd;
-  color: black;
+footer {
+  margin-top: 50px;
   padding: 20px;
+  color: white;
+  background-color: #333;
+  text-decoration: none;
+  list-style: none;
 }
 
-.nameInfo {
-  margin-bottom: 15px;
-  margin-top: 15px;
+footer h3 {
+  color: orange;
+}
+
+.footerLayout {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.helpfulInfo {
+  display: inline-block;
+  margin-top: 20px;
+  margin-right: 10px;
+}
+
+footer ul {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  list-style: none;
+}
+
+footer ul li{
+  padding: 3px;
+  margin-top: 5px;
+}
+
+footer button {
+  color: white;
+  background-color: orange;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 7px;
+}
+
+.socialIcons {
+  width: 85%;
+  border-top: 3px solid gray;
+  margin-left: auto;
+  margin-right: auto; 
+  text-align: center;
 }
 
 @media screen and (max-width:1024px){
   .navLinks {
-    width: 60%;
+  width: 60%;
   }
 }
 
 @media screen and (max-width:768px){
   body{
-    overflow-x: hidden;
+  overflow-x: hidden;
   }
   .layout {
-    width: 100%;
+  width: 100%;
     
   }
   .navLinks {
-    position: absolute;
-    height: 92vh;
-    right: 0px;
-    top: 8vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 40%;
-    background-color: #333;
-    transform: translateX(100%);
-    transition: transform 0.5s ease-in;
-    font-size: 40px;
+  position: fixed;
+  height: 92vh;
+  top: 8vh;
+  right: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40%;
+  background-color: #333;
+  transform: translateX(100%);
+  transition: transform 0.5s ease-in;
+  font-size: 40px;
+  z-index: 3;
   }
   .navLinks li {
-    opacity: 0;
+  opacity: 0;
   }
-.navLinks a {
-font-size: 16px;
-}
+  .navLinks a {
+  font-size: 16px;
+  }
 
 ul li a:hover {
   background-color: #ddd;
   color: black;
-  padding: 75px 80px;;
-  
-}
+  padding: 75px 80px;
+} 
   .menuBars {
     display: block;
     cursor: pointer;
@@ -196,12 +261,12 @@ ul li a:hover {
 
 @keyframes navLinkFade{
   from{
-    opacity: 0;
-    transform: translateX(50px);
+  opacity: 0;
+  transform: translateX(50px);
   }
   to{
-    opacity: 1;
-    transform: translate(0px);
+  opacity: 1;
+  transform: translate(0px);
   }
 }
 
