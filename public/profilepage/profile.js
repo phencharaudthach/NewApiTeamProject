@@ -20,14 +20,13 @@ function tabs(evt, tabName) {
 }
 
 
-function getData() {
+function getNewsData() {
   //Step 1: initialize a New XHR object
-  var xhrObj = new XMLHttpRequest();
+  var xhrObj = new XMLHttpRequest();  
   // console.log(xhrObj);
-
   //Step 2: xhr.open(requestType, URL, asyncBool)
   xhrObj.open('GET', 'http://newsapi.org/v2/top-headlines?' +
-    'country=us&' +
+    'country='+countryInfo+'&' +
     'apiKey=0347c2b176094a9d97c532469f456baa', true);
 
   // Step 3: Wait for transfer to load. 
@@ -39,7 +38,6 @@ function getData() {
       // step 5: convert text data to JSON
       var parsedData = JSON.parse(xhrObj.responseText);
       console.log(parsedData);
-
       let list = '';
       for (var i = 0; i < parsedData.articles.length; i++) {
         list += "<br> <h4>" + [i + 1] + "</h4>" +
@@ -120,7 +118,6 @@ function logoutUser() {
 
     if (xhr.readyState == 4 && xhr.status == "200") {
       console.log("this works");
-
       window.location.href = "http://localhost:3000/"
     } else {
       console.error("this does not");
@@ -131,5 +128,5 @@ function logoutUser() {
 }
 
 
-document.getElementById("listButton").addEventListener("click", getData);
+document.getElementById("listButton").addEventListener("click", getNewsData);
 document.getElementById("logout").addEventListener("click", logoutUser);
