@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- test -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
@@ -27,29 +26,29 @@
     </nav>
     <section>
         <div class="layout">
-            <form action="/login" method="POST">
+            <form action="../profilepage/profile.html">
                 <h2>Please login</h2>
-                <input id="emailOrNumber" name="email" type="email" placeholder="Username">
-                    <div class= "passwordField">
-                    <input id="emailLogin" type="password" placeholder="Password">
+                <input id="usernameLogin" type="text" placeholder="username">
+            <div class= "passwordField">
+                    <input id="passwordLogin" type="password" placeholder="Password">
             </div>
             <button id="logIn" class="buttonStyle"type="submit">Log in</button>
             <button id="newAccount" class="buttonStyle" type="submit">Create New Account</button>
             </form>
       
             <div class="containerColor">
-                <form id="criticalInfo" form=action="/register" method="POST">
+                <form id="criticalInfo" >
                     <h2> Don't have an account? Sign up!!</h2>
                     <div class="nameInfo">
                         <small>Error message</small>
-                        <label class="nameLabel">* Name 
-                        <input id="fullName"type="text" name="Name" placeholder="Enter your First Name">
+                        <label class="nameLabel">* Name: 
+                        <input id="fullName"type="text" name="Name" placeholder="Enter Name">
                         </label>
                     </div>
                     <div class="nameInfo">
                         <small>Error message</small>
-                        <label class="nameLabel">* Username 
-                        <input id="uniqueName" type="text" name="Name" placeholder="Enter a Username">
+                        <label class="nameLabel">* Username: 
+                        <input id="uniqueName" type="text" name="Name" placeholder="Create a username">
                         </label>
                     </div>
                     <div class="nameInfo">
@@ -61,51 +60,53 @@
                     <div class="nameInfo">
                         <small>Error message</small>
                         <label class="nameLabel">* Password 
-                        <input id="userPassword" type="password" name="Name" placeholder="Create a Password">
+                        <input id="userPassword" type="password" name="Name" placeholder="Create Password">
                         </label>
                     </div>
-                <button onclick="checkInputs()" id="signUp" type="submit">Sign Up!</button>
+                <button id="signUp" type="submit">Sign Up!</button>
                 </form>
             </div>
         </div>
     </section>
     <footer>
-        <div class="footerLayout">
-            <div class="helpfulInfo">
-                <h3>About Us</h3>
-                <p>Small Corporation seeking to add value to the lives of our users</p>
-            </div>
-            <div class="helpfulInfo">
-                <h3>Information</h3>
-                <ul>
-                    <li>Search</li>
-                    <li>Blog</li>
-                    <li>Events<li>
-                </ul>
-            </div>
-            <div class="helpfulInfo">
-                <h3>Helpful Links</h3>
-                <ul>
-                    <li>Support</li>
-                    <li>Terms and Conditions</li>
-                    <li>Private Policy<li>
-                </ul>
-            </div>
-            <div class="helpfulInfo">
-                <label>Subsribe to our News Letter
-                <input id="subscriberEmail" type="email" name="Name" placeholder="Subscribe">
-                </label>
-                <button type="submit">Subscribe</button>
-            </div>
+    <div class="footerLayout">
+        <div class="helpfulInfo">
+            <h3>About Us</h3>
+            <p>Small Corporation seeking to add value to the lives of our users</p>
         </div>
-        <div class="socialIcons">
+        <div class="helpfulInfo">
+            <h3>Information</h3>
+            <ul>
+                <li>Search</li>
+                <li>Blog</li>
+                <li>Events<li>
+            </ul>
+        </div>
+        <div class="helpfulInfo">
+            <h3>Helpful Links</h3>
+            <ul>
+                <li>Support</li>
+                <li>Terms and Conditions</li>
+                <li>Private Policy<li>
+            </ul>
+        </div>
+        <div class="helpfulInfo">
+            <label>Subsribe to our News Letter
+            <input id="subscriberEmail" type="email" name="Name" placeholder="Subscribe">
+            </label>
+            <button type="submit">Subscribe</button>
+        </div>
+    </div>
+    <div class="socialIcons">
         <p>Social Media buttons</p>
 
     </div>
     </footer>
 
 </body>
-<script src="nav.js"></script>
-<script src="geolocation.js"></script>
+<!-- <script src="nav.js"></script> -->
+<!-- <script src="login.js"></script> -->
+<script src="register.js"></script>
+<!-- <script src="geolocation.js"></script> -->
 
 </html>

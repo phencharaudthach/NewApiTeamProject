@@ -6,29 +6,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <link href="profile.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Liu+Jian+Mao+Cao&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <nav>
+        <div class="topnav">
+        <h4>Wu-Tang</h4>
+        </div>
+        <ul class="navLinks">
+            <li><a href="../index.html">Home</a></li>
+            <li><a class="active" href="../login/login.html">Login</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a id="logout" href="">Log Out</a></li>
+            </ul>
+            <div class="menuBars">
+            <div class="barOne"></div>
+            <div class="barTwo"></div>
+            <div class="barThree"></div>
+            </div>
+        </nav>
     <div class="container">
         <div class="profile-header">
             <div class="profile-img">
-                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png">
+                <img id="userImage">
 
             </div>
             <div class="profile-nav-info">
                 <h3 class="username" id="testName">Peter Smith</h3>
+                
+
             </div>
         </div>
         <div class="main-bd">
             <div class="left-side">
                 <div class="profile-side">
+                    <h3 id="usernameInfo">Current Username:</h3>
+                    <h3 id="countryInfo">Country:</h3>
 
                     <div class="profile-btn">
-
-                        <button class="message-btn" id="testButton"> Message
+                        
+                        <!-- <button class="message-btn" id="testButton"> Message
                         </button>
                         <button class="follow-btn"> Follow
-                        </button>
+                        </button> -->
                     </div>
                 </div>
             </div>
@@ -36,7 +58,7 @@
                 <div class="nav">
                     <ul>
                         <li class="tablinks" onclick="tabs(event, 'news-article')">News Article</li>
-                        <li class="tablinks" onclick="tabs(event, 'saved-articles')">Saved Articles</li>
+                        <!-- <li class="tablinks" onclick="tabs(event, 'saved-articles')">Saved Articles</li> -->
                         <li class="tablinks" onclick="tabs(event, 'search-articles')">Search</li>
                         <li class="tablinks" onclick="tabs(event, 'settings')">Settings</li>
 
@@ -80,8 +102,8 @@
                             <label>Change email: </label><input type="text" id="changingEmail"> 
                             <label>Change username: </label><input type="text" id="changingUsername"> 
                             <label>Change password: </label> <input type="text" id="changingPw">
-                            <label>Upload photo: </label><input type="text" id="changingPhoto"> 
-                            <label>Enter Country: </label><input type="text" id="changingCountry"> 
+                            <label>Upload photo: </label><input type="text" id="changingPhoto" placeholder="enter image url"> 
+                            <label>Enter Country: </label><input type="text" id="changingCountry" placeholder="enter 2 letters, abbreviate"> 
                             <br>
                           
                             <button id="update-Btn">Submit</button>

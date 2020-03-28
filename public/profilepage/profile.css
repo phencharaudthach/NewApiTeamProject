@@ -1,5 +1,5 @@
 :root {
-    --color: #e40046;
+    --color: rgb(30, 144, 255);
 }
 
 * {
@@ -35,7 +35,7 @@ body {
     left: 50px;
     top: 20px;
     z-index: 5;
-    background: whites;
+    background: white;
 }
 .profile-nav-info {
     float: left;
@@ -61,14 +61,14 @@ body {
     background: white;
     box-shadow: 0px 3px 5px rgba(0,0,0,.2);
     padding: 90px 30px 20px;
-
+    text-align: center;
 }
 
 
 .profile.btn {
     display: flex;
 }
-button.message-btn, button.follow-btn {
+/* button.message-btn, button.follow-btn {
     border: 0;
     padding: 10px;
     width: 100%;
@@ -83,10 +83,58 @@ button.message-btn, button.follow-btn {
     transition: background .3s ease-in-out;
     box-shadow: 0px 5px 7px 0px rgba(0,0,0,.3);
     color: #fff;
-}
+} */
 
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 8vh;
+    background-color: #333;
+    font-size: 16px;
+  }
+  
+  .topnav {
+    font-family: 'Liu Jian Mao Cao', cursive;
+    color: white;
+    font-size: 25px;
+  }
+
+  .navLinks {
+    display: flex;
+    justify-content: space-around;
+    width: 40%;
+  }
+
+  .navLinks li{
+    list-style: none;
+  }
+
+  .navLinks a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+  }
+
+  ul li a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+
+  .menuBars { 
+    display: none;
+  }
+
+  .menuBars div{
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 5px;
+    transition: all 0.3s ease;
+  }
+  
 .nav {
-    width: 100%;
     z-index: -1;
 }
 
@@ -109,12 +157,13 @@ button.message-btn, button.follow-btn {
 
 .nav ul li.active, 
 .nav ul li:hover {
-    box-shadow: 0px -3px 0px rgba(288, 0, 70, .9) inset;
+    box-shadow: 0px -3px 0px rgba(30, 144, 255, 0.9) inset;
 }
 
 .profile-body {
     z-index: -1;
     padding: 20px;
+    width:fit-content;
     word-break: break-word ;
 }
 
@@ -128,18 +177,19 @@ img {
     border: 3px hidden grey;
     box-shadow: 0px 5px 7px 0px rgba(0,0,0,.3);;
     float: left;
+    text-align: center;
+    
 }
 
 .profiletab {
    display: none;
+   width: inherit;
 }
 
 .tab {
     padding: 20px;
     width: 100%;
-    
     list-style-type: none;
-    
 }
 
 #searchBtn, #listButton{

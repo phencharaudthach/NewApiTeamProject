@@ -2,7 +2,7 @@ function tabs(evt, tabName) {
   // Declare all variables
   var i, profiletab, tablinks;
 
-  // Get all elements with class="tabcontent" and hide them
+  // Get all elements with class="profiletab" and hide them
   profiletab = document.getElementsByClassName("profiletab");
   for (i = 0; i < profiletab.length; i++) {
     profiletab[i].style.display = "none";
@@ -19,17 +19,16 @@ function tabs(evt, tabName) {
   evt.currentTarget.className += " active";
 }
 
-document.getElementById("listButton").addEventListener("click", getData);
 
 function getData() {
     //Step 1: initialize a New XHR object
     var xhrObj = new XMLHttpRequest();
    // console.log(xhrObj);
-
+   var userCountry = document.getElementById('userCountry').value;
     //Step 2: xhr.open(requestType, URL, asyncBool)
     xhrObj.open('GET', 'http://newsapi.org/v2/top-headlines?' +
-  'country=us&' +
-  'apiKey=0347c2b176094a9d97c532469f456baa', true);
+    'country="'+userCountry+'"&' +
+    'apiKey=0347c2b176094a9d97c532469f456baa', true);
 
     // Step 3: Wait for transfer to load. 
     xhrObj.onload = function () {
@@ -62,3 +61,74 @@ function getData() {
     // Step: 4
     xhrObj.send();
 }
+
+var queryString = decodeURIComponent(window.location.search);
+  queryString = queryString.substring(1);
+  var input = queryString.slice(1);
+  var inputArray = [];
+  inputArray.push(input);
+//READ One
+function getOneByUsername() {
+  event.preventDefault();
+  
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", "http://localhost:3000/sn-users/" + input, true);
+
+  xhr.onload = function() {
+    var user = JSON.parse(xhr.responseText);
+    // var user = JSON.stringify(xhr.responseText);
+    userName= user.name;
+    userImage = user.image;
+    usernameInfo = user.username;
+    countryInfo = user.country;
+    
+    if (xhr.readyState == 4 && xhr.status == "200") {
+      console.log(user);
+      document.getElementById("testName").innerHTML = userName;
+      document.getElementById("userImage").src = userImage;
+      document.getElementById("usernameInfo").innerHTML = "<u>Username:</u> "+usernameInfo;
+      document.getElementById("countryInfo").innerHTML = "<u>Country:</u> "+countryInfo;
+      console.log(user.image)
+      
+    } else {
+      document.getElementById("testName").innerHTML = "<i>user not found</i>";
+      console.error(user);
+    }
+  };
+
+  xhr.send(null);
+}
+
+function startClock(){
+    getOneByUsername();
+}
+if(window.addEventListener) {
+    window.addEventListener('load',startClock,false); //W3C
+} else {
+    window.attachEvent('onload',startClock); //IE
+}
+
+function logoutUser() {
+  event.preventDefault();
+  
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", "http://localhost:3000/sn-users/logout/", true);
+
+  xhr.onload = function() {
+    // var user = JSON.parse(xhr.responseText);
+    // var user = JSON.stringify(xhr.responseText);
+
+    if (xhr.readyState == 4 && xhr.status == "200") {
+      console.log("this works");
+      window.location.href = "http://localhost:3000/"
+    } else {
+      console.error("this does not");
+    }
+  };
+
+  xhr.send(null);
+}
+
+
+document.getElementById("listButton").addEventListener("click", getData );
+document.getElementById("logout").addEventListener("click", logoutUser);
