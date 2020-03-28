@@ -62,19 +62,17 @@ function getData() {
   xhrObj.send();
 }
 
-var queryString = decodeURIComponent(window.location.search);
-queryString = queryString.substring(1);
-var input = queryString.slice(1);
+
 
 //READ One
 function getOneByUsername() {
   event.preventDefault();
-  const inputArray = [];
-  inputArray.push(input);
-  var url = document.location.href;
-      window.history.pushState({}, "", url.split("?")[0]);
+  var queryString = decodeURIComponent(window.location.search);
+  queryString = queryString.substring(1);
+  var input = queryString.slice(1);
+
   var xhr = new XMLHttpRequest();
-  xhr.open("GET", "http://localhost:3000/sn-users/" + inputArray, true);
+  xhr.open("GET", "http://localhost:3000/sn-users/" + input, true);
 
   xhr.onload = function () {
     var user = JSON.parse(xhr.responseText);
@@ -122,7 +120,7 @@ function logoutUser() {
 
     if (xhr.readyState == 4 && xhr.status == "200") {
       console.log("this works");
-      
+
       window.location.href = "http://localhost:3000/"
     } else {
       console.error("this does not");
