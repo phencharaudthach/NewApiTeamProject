@@ -24,11 +24,10 @@ function getData() {
     //Step 1: initialize a New XHR object
     var xhrObj = new XMLHttpRequest();
    // console.log(xhrObj);
-   var userCountry = document.getElementById('userCountry').value;
+
     //Step 2: xhr.open(requestType, URL, asyncBool)
     xhrObj.open('GET', 'http://newsapi.org/v2/top-headlines?' +
-    'country="'+userCountry+'"&' +
-    'apiKey=0347c2b176094a9d97c532469f456baa', true);
+  'country=us&'+'apiKey=0347c2b176094a9d97c532469f456baa', true);
 
     // Step 3: Wait for transfer to load. 
     xhrObj.onload = function () {
@@ -62,14 +61,12 @@ function getData() {
     xhrObj.send();
 }
 
-var queryString = decodeURIComponent(window.location.search);
-  queryString = queryString.substring(1);
-  var input = queryString.slice(1);
-  var inputArray = [];
-  inputArray.push(input);
 //READ One
 function getOneByUsername() {
   event.preventDefault();
+  var queryString = decodeURIComponent(window.location.search);
+  queryString = queryString.substring(1);
+  var input = queryString.slice(1);
   
   var xhr = new XMLHttpRequest();
   xhr.open("GET", "http://localhost:3000/sn-users/" + input, true);
@@ -81,7 +78,7 @@ function getOneByUsername() {
     userImage = user.image;
     usernameInfo = user.username;
     countryInfo = user.country;
-    
+
     if (xhr.readyState == 4 && xhr.status == "200") {
       console.log(user);
       document.getElementById("testName").innerHTML = userName;
@@ -89,7 +86,6 @@ function getOneByUsername() {
       document.getElementById("usernameInfo").innerHTML = "<u>Username:</u> "+usernameInfo;
       document.getElementById("countryInfo").innerHTML = "<u>Country:</u> "+countryInfo;
       console.log(user.image)
-      
     } else {
       document.getElementById("testName").innerHTML = "<i>user not found</i>";
       console.error(user);
@@ -120,7 +116,7 @@ function logoutUser() {
 
     if (xhr.readyState == 4 && xhr.status == "200") {
       console.log("this works");
-      window.location.href = "http://localhost:3000/"
+      
     } else {
       console.error("this does not");
     }
@@ -130,5 +126,5 @@ function logoutUser() {
 }
 
 
-document.getElementById("listButton").addEventListener("click", getData );
+document.getElementById("listButton").addEventListener("click", getData);
 document.getElementById("logout").addEventListener("click", logoutUser);
