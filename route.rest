@@ -1,17 +1,14 @@
 GET http://localhost:3000/sn-users/
 
 ###
-GET http://localhost:3000/sn-users/5e76d84c5369f90eec4d6fd4
-
-
-###
-Get http://localhost:3000/dj_news/searchTerm
+GET http://localhost:3000/sn-users/shannon1
 
 ###
-POST http://localhost:3000/sn-users/
+POST http://localhost:3000/sn-users/login/
 Content-Type: application/json
 
 {
+<<<<<<< HEAD
     "name": "Peter Smith",
     "username": "Peter1",
     "email": "Peter@gmail.com",
@@ -39,8 +36,31 @@ Content-Type: application/json
 
 {
     "country": "US"
+=======
+    "username": "shannon1",
+    "password": "shannon123"
+}
+
+###
+Get http://localhost:3000/dj_news/searchTerm
+
+###
+GET http://localhost:3000/sn-users/logout
+
+###
+
+PATCH http://localhost:3000/sn-users/shannon1
+Content-Type: application/json
+
+{
+    "password": "shannon123"
+>>>>>>> profile_page_v1.0
 }
 
 ###
 
+<<<<<<< HEAD
 DELETE http://localhost:3000/sn-users/5e76c41fd8398a0928de9942
+=======
+DELETE http://localhost:3000/sn-users/heyarnold
+>>>>>>> profile_page_v1.0

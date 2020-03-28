@@ -11,6 +11,11 @@ require('./config/passport.js')
 
 // app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(require("express-session")({
+    secret:"My days I spent coding is the best",
+    resave: false,
+    saveUninitialized: false
+}));
 //middleware to initialize passport for authentication
 app.use(passport.initialize());
 //Middleware to keep track of users session
@@ -25,14 +30,16 @@ passport.deserializeUser(User.deserializeUser());
 // passport.use(new LocalStrategy(User.authenticate())); 
 
 
+
 const indexRouter = require('./routes/index')
- const userRouter = require('./routes/sn-users')
+ const userRouter = require('./routes/sn-users');
  const newsSearchRouter = require('./routes/dj_news');
 
  app.use(express.json());
  app.use("/sn-users", userRouter);
  app.use("/dj_news", newsSearchRouter);
-app.use(express.static('./public'))
+app.use(express.static('./public'));
+
 
 //Connect to Database
 const mongoose = require('mongoose');

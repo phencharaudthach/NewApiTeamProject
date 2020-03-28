@@ -61,7 +61,7 @@ body {
     background: white;
     box-shadow: 0px 3px 5px rgba(0,0,0,.2);
     padding: 90px 30px 20px;
-
+    text-align: center;
 }
 
 
@@ -86,7 +86,6 @@ button.message-btn, button.follow-btn {
 }
 
 .nav {
-    width: 100%;
     z-index: -1;
 }
 
@@ -115,6 +114,7 @@ button.message-btn, button.follow-btn {
 .profile-body {
     z-index: -1;
     padding: 20px;
+    width:fit-content;
     word-break: break-word ;
 }
 
@@ -128,18 +128,19 @@ img {
     border: 3px hidden grey;
     box-shadow: 0px 5px 7px 0px rgba(0,0,0,.3);;
     float: left;
+    text-align: center;
+    
 }
 
 .profiletab {
    display: none;
+   width: inherit;
 }
 
 .tab {
     padding: 20px;
     width: 100%;
-    
     list-style-type: none;
-    
 }
 
 #searchBtn, #listButton{
